@@ -12,6 +12,6 @@ Final Course Project for CS-401 Modern Programming Practices
  5. [Samson Tekleab Zaid](https://github.com/JaCkIsO)
 
 **Project Information** 
- 1. [Project Proposal](https://mum0-my.sharepoint.com/:w:/g/personal/cgebru_miu_edu/EbS-OSSfh1ZJhTZfeIPYfVgBUW2CVQFlyNESpucLGcgomQ?rtime=T6-NBH7a2Eg)
+ 1. [Project Proposal](https://mum0-my.sharepoint.com/:w:/g/personal/cgebru_miu_edu/EbS-OSSfh1ZJhTZfeIPYfVgBZ4xS_AbA3exICboqVr9MBA?e=H3iZgy)
 
 
