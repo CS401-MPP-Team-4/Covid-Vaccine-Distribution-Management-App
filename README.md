@@ -1,4 +1,4 @@
-# Covid-Vaccine-Distribution-Management-App
+# Covid-19-Vaccine-Distribution-Management-App
 
 Final Course Project for CS-401 Modern Programming Practices
 
