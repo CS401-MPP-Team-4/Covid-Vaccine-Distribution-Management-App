@@ -2,18 +2,28 @@ package miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp;
 
 import java.io.IOException;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.AnchorPane;
 
 public class MasterController {
 	@FXML
-	VBox mainContainer;
+	AnchorPane mainContainer;
+	
+	
+	private void loadChildView(ChildView view) throws IOException {
+		var child = App.loadFXML(view.getValue());
+		mainContainer.getChildren().setAll(child);
+	}
 	
 	@FXML
 	private void jumptToVaccine() throws IOException {
-		var abc = App.loadFXML("views/vaccine");
-		mainContainer.getChildren().add(abc);
+		loadChildView(ChildView.VACCINE);
+	}
+	
+	@FXML
+	private void exitApp() throws IOException {
+		Platform.exit();
 	}
 	
 }
