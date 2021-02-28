@@ -7,6 +7,6 @@ import java.io.IOException;
 public class Login {
     @FXML
     private void goToHome() throws IOException {
-        App.setRoot("primary");
+        App.setRoot("master");
     }
 }
