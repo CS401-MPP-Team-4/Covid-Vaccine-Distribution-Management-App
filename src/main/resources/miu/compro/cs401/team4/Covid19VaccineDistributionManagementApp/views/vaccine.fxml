@@ -24,6 +24,7 @@
                     <columns>
                       <TableColumn prefWidth="75.0" text="Name" />
                       <TableColumn prefWidth="75.0" text="Manufacturer" />
+                      <TableColumn prefWidth="75.0" text="Amount" />
                     </columns>
                   </TableView>
                </children></AnchorPane>
