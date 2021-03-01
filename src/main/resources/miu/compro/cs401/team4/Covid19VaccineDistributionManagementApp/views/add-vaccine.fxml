@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.controllers.AddVaccine">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <Label id="vaccineNameLabel" layoutX="36.0" layoutY="26.0" text="Name" />
+            <TextField id="vaccineNameField" layoutX="36.0" layoutY="57.0" promptText="Enter Name..." />
+            <Label id="vaccineSupplierLabel" layoutX="36.0" layoutY="101.0" text="Supplier" />
+            <ChoiceBox id="vaccineSupplierChoiceBox" layoutX="36.0" layoutY="135.0" prefHeight="27.0" prefWidth="161.0" />
+            <Label id="vaccineQuantityLabel" layoutX="35.0" layoutY="183.0" text="Quantity" />
+            <TextField id="vaccineQuantityField" layoutX="36.0" layoutY="218.0" promptText="Enter Quantity" />
+            <Button id="vaccineRegisterBtn" layoutX="244.0" layoutY="323.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="113.0" text="Register" />
+            <Label id="vaccineInstructionLabel" layoutX="328.0" layoutY="26.0" text="Instruction" />
+            <TextArea id="vaccineInstructionTextArea" layoutX="328.0" layoutY="57.0" prefHeight="200.0" prefWidth="200.0" promptText="Enter Instruction..." />
+         </children></AnchorPane>
+   </children>
+</AnchorPane>
