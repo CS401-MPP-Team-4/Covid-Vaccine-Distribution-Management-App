@@ -21,7 +21,6 @@ public class App extends Application {
         stage.setTitle("CVDMS");
         stage.setScene(scene);
 
-
 //        stage.setMaximized(true);
         stage.show();
     }
