@@ -1,9 +1,8 @@
 package miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.views.crudHelper;
 
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.List;
+
 import java.util.ResourceBundle;
 import java.util.stream.Stream;
 
@@ -14,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+
 
 public abstract class AbstractCRUDController<T> implements Initializable {
 	@FXML
@@ -48,13 +48,12 @@ public abstract class AbstractCRUDController<T> implements Initializable {
 					TableColumn<?, ?> col = (TableColumn<?, ?>) f.get(this);
 					col.setCellValueFactory(new PropertyValueFactory<>(annotation.field()));
 				} catch (IllegalArgumentException e) {
-					e.printStackTrace();
+					throw new RuntimeException(e);
 				} catch (IllegalAccessException e) {
-					e.printStackTrace();
+					throw new RuntimeException(e);
 				}
 			}
 		});
-
 	}
 
 	public TableView<T> getCrudTable() {

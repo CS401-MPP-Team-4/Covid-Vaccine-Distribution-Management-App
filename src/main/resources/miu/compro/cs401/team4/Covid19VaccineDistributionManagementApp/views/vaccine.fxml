@@ -52,19 +52,19 @@
                               <VBox>
                                  <children>
                                     <Label text="Name" />
-                                    <TextField prefWidth="142.0" text="asd" />
+                                    <TextField fx:id="txt_name" prefWidth="142.0" text="asd" />
                                  </children>
                               </VBox>
                               <VBox GridPane.rowIndex="1">
                                  <children>
                                     <Label text="Manufacturer" />
-                                    <TextField prefWidth="142.0" text="asd" />
+                                    <TextField fx:id="txt_manufacturer" prefWidth="142.0" text="asd" />
                                  </children>
                               </VBox>
                               <VBox GridPane.rowIndex="2">
                                  <children>
                                     <Label text="Amount" />
-                                    <TextField prefWidth="142.0" />
+                                    <TextField fx:id="txt_amount" prefWidth="142.0" />
                                  </children>
                               </VBox>
                            </children>
