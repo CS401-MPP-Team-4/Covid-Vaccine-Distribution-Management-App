@@ -14,7 +14,7 @@ public class CreateEmptyDB {
 			statement.executeUpdate("CREATE TABLE Supplier(\r\n"
 					+ "    [id] INT IDENTITY (1, 1) NOT NULL,\r\n"
 					+ "    [name] NVARCHAR(50) NOT NULL,\r\n"
-					+ "    [city] VARCHAR(150) NULL,\r\n"
+					+ "    [address] VARCHAR(150) NULL,\r\n"
 					+ "    [phoneNumber] NVARCHAR(15) NULL,\r\n"
 					+ "\r\n"
 					+ "    CONSTRAINT [PK_Supplier] PRIMARY KEY ([id] ASC),\r\n"
