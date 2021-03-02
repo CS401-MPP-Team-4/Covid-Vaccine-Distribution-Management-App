@@ -8,9 +8,9 @@ public abstract class RepositoryService<T> {
 	
 	abstract public T getById(Integer id);
 	
-	abstract public Integer add(T model); // should return new Id
+	abstract public boolean add(T model); // should return new Id
 	
-	abstract public void update(T model);
+	abstract public boolean update(T model);
 	
-	abstract public void delete(Integer Id);
+	abstract public boolean delete(Integer Id);
 }
