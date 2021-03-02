@@ -265,8 +265,10 @@ fabric.properties
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-*.code-workspace
+*.code-WORKSPACE
 
 # Local History for Visual Studio Code
 .history/
 
+## DB File
+cvdms.db

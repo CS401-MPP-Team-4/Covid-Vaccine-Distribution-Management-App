@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
+import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models.Supplier;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models.Vaccine;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.views.crudHelper.AbstractCRUDController;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.views.crudHelper.Bind;
@@ -45,7 +46,10 @@ public class VaccineController extends AbstractCRUDController<Vaccine> {
 
 	@Override
 	public List<Vaccine> fetchData() {
-		return Arrays.asList(new Vaccine(1, "Moderna", "Moderna", 200), new Vaccine(2, "Pfizer", "Pfizer", 100));
+		return Arrays.asList(
+			new Vaccine(1, "Moderna", new Supplier(1, "Moderna", "Fair Field, Iowa", "261-458-5231"), 200),
+			new Vaccine(2, "Pfizer", new Supplier(1, "Pfizer", "Fair Field, Iowa", "261-123-4567"), 100)
+		);
 	}
 
 }
