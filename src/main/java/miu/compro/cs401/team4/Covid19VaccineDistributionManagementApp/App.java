@@ -17,7 +17,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("login"), (stage.getX() + stage.getWidth() ), stage.getY());
+        scene = new Scene(loadFXML("views/login/login"), (stage.getX() + stage.getWidth() ), stage.getY());
         scene.getStylesheets().addAll(this.getClass().getResource("css/style.css").toExternalForm());
         stage.setTitle("CVDMS");
         stage.setScene(scene);
