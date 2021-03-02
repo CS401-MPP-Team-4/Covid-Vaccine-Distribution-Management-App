@@ -1,4 +1,4 @@
-package miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.views;
+package miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.controllers;
 
 import java.net.URL;
 import java.util.Arrays;
