@@ -14,14 +14,16 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
-
+    public static Stage primaryStage;
+    
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("views/login/login"), (stage.getX() + stage.getWidth() ), stage.getY());
+        scene = new Scene(loadFXML(Navigations.LOGIN.getValue()), (stage.getX() + stage.getWidth() ), stage.getY());
         scene.getStylesheets().addAll(this.getClass().getResource("css/style.css").toExternalForm());
         stage.setTitle("CVDMS");
         stage.setScene(scene);
         stage.show();
+        primaryStage = stage;
     }
 
     public static void setRoot(String fxml) throws IOException {

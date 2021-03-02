@@ -7,7 +7,8 @@ public class Supplier {
 	private String phoneNumber;
 
 	// START Constructors
-	public Supplier() { }
+	public Supplier() {
+	}
 
 	public Supplier(Integer id, String name, String address, String phoneNumber) {
 		this.id = id;
@@ -22,14 +23,22 @@ public class Supplier {
 	public int getId() {
 		return id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public String getAddress() {
 		return address;
 	}
+
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 	// END Getters
+
+	@Override
+	public String toString() {
+		return String.format("%s %s", getName(), getAddress());
+	}
 }

@@ -1,8 +1,10 @@
 package miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.crudhelper;
 
+import java.beans.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.List;
 
 import java.util.ResourceBundle;
@@ -17,17 +19,15 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-
-public abstract class AbstractCRUDController<T> implements Initializable {
+public abstract class AbstractCRUDListController<T> implements Initializable {
 	@FXML
 	TableView<T> crudTable;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		System.out.println("AbstractCRUDController");
-
 		bindColums();
 		fillTable();
+		bindEvents();
 		init(location, resources);
 	}
 
@@ -39,7 +39,7 @@ public abstract class AbstractCRUDController<T> implements Initializable {
 		ObservableList<T> list = FXCollections.observableList(fetchData());
 		crudTable.setItems(list);
 	}
-	
+
 	public T getById(Integer id) {
 		return null;
 	}
@@ -66,13 +66,13 @@ public abstract class AbstractCRUDController<T> implements Initializable {
 	private void fillDetails(T model) {
 		Class<?> cls = this.getClass();
 
-		Stream.of(cls.getDeclaredFields()).filter(f -> f.getType().isAssignableFrom(TableColumn.class)).forEach(f -> {
+		Stream.of(cls.getDeclaredFields()).filter(f -> f.getType().isAssignableFrom(Label.class)).forEach(f -> {
 			if (f.isAnnotationPresent(Bind.class)) {
 				Bind annotation = (Bind) f.getAnnotation(Bind.class);
 				try {
 					f.setAccessible(true);
 					Label label = (Label) f.get(this);
-					String value = getModelPropertyValue<T>(model.getClass(), model, annotation.field());
+					String value = getModelPropertyValue(model, annotation.field());
 					label.setText(value);
 				} catch (IllegalArgumentException e) {
 					throw new RuntimeException(e);
@@ -82,25 +82,37 @@ public abstract class AbstractCRUDController<T> implements Initializable {
 			}
 		});
 	}
-	
+
 	private static <T> String getModelPropertyValue(T model, String propertyName) {
-		
-		Class<T> cls = (Class<T>) model.getClass();
-		
-		String getterName = "get" + propertyName.substring(0, 1).toUpperCase() + propertyName.substring(1);
-		
-		Method getterMethod;
+
+
 		try {
-			getterMethod = cls.getMethod(getterName, null);
-		} catch (NoSuchMethodException e) {
-			throw new RuntimeException(e);
-		}
-		
-		try {
-			return String.valueOf(getterMethod.invoke(model, null));
+			Class<?> cls = model.getClass();
+
+//			String getterName = "get" + propertyName.substring(0, 1).toUpperCase() + propertyName.substring(1);
+
+			return Arrays.stream(Introspector.getBeanInfo(cls).getPropertyDescriptors())
+			.filter(pd-> pd.getReadMethod() != null && propertyName.equals(pd.getName()))
+			.findAny()
+			.map(m-> m.getReadMethod())
+			.map(m -> {
+				try {
+					return m.invoke(model);
+				}  catch (Exception e) {
+					throw new RuntimeException(e);
+				}
+			})
+			.map(r -> String.valueOf(r)).orElse("");
+			
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
+
+	}
+
+	private void bindEvents() {
+		getCrudTable().getSelectionModel().selectedItemProperty().addListener(
+	            (observable, oldValue, newValue) -> fillDetails(newValue));
 	}
 	
 	public TableView<T> getCrudTable() {
