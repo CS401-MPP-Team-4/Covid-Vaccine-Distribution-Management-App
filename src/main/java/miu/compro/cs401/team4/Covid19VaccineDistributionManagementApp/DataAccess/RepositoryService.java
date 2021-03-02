@@ -12,5 +12,5 @@ public abstract class RepositoryService<T> {
 	
 	abstract public void update(T model);
 	
-	abstract public void delete(Integer Id);
+	abstract public void delete(Integer id);
 }

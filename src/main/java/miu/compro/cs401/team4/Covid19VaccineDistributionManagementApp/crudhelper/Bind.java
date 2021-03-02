@@ -1,4 +1,4 @@
-package miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.views.crudHelper;
+package miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.crudhelper;
 
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;

@@ -9,10 +9,10 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
+import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.crudhelper.AbstractCRUDController;
+import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.crudhelper.Bind;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models.Supplier;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models.Vaccine;
-import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.views.crudHelper.AbstractCRUDController;
-import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.views.crudHelper.Bind;
 
 public class VaccineController extends AbstractCRUDController<Vaccine> {
 	@FXML
