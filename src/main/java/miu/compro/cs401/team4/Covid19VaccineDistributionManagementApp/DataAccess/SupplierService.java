@@ -39,7 +39,25 @@ public class SupplierService extends RepositoryService<Supplier> {
 
     @Override
     public Supplier getById(Integer id) {
-        return null;
+        Supplier supplier = null;
+
+        try {
+            System.out.println("query preparing");
+            String query = "select id, name, address, phoneNumber from Supplier where id=?";
+            PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            supplier = new Supplier(
+                    resultSet.getInt(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3),
+                    resultSet.getString(4));
+
+//            DBManager.connection.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return supplier;
     }
 
     @Override

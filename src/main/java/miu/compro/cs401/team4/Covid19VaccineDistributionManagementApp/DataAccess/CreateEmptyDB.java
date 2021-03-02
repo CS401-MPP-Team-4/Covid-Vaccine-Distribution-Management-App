@@ -25,6 +25,7 @@ public class CreateEmptyDB {
 			statement.executeUpdate("CREATE TABLE Vaccine(\r\n"
 					+ "    [id] INTEGER ,\r\n"
 					+ "    [name] NVARCHAR(50) NOT NULL,\r\n"
+					+ "    [amount] INTEGER NOT NULL,\r\n"
 					+ "    [supplier] INT NULL,\r\n"
 					+ "    \r\n"
 					+ "    CONSTRAINT [PK_Vaccine] PRIMARY KEY ([id] ASC autoincrement),\r\n"
