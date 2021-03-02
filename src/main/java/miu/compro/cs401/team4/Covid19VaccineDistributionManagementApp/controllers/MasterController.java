@@ -1,4 +1,4 @@
-package miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp;
+package miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.controllers;
 
 import java.io.IOException;
 import java.net.URL;
@@ -8,6 +8,8 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
+import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.App;
+import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.ChildView;
 
 public class MasterController implements Initializable {
 	@FXML

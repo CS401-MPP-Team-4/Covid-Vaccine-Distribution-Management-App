@@ -12,7 +12,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.MasterController">
+<VBox prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.controllers.MasterController">
 	<children>
 		<MenuBar VBox.vgrow="NEVER">
 			<menus>

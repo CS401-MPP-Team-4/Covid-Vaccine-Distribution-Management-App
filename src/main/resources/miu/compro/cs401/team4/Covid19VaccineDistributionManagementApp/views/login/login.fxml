@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.Login">
+<AnchorPane prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.controllers.LoginController">
    <children>
       <VBox alignment="CENTER" layoutX="421.0" layoutY="91.0" prefHeight="426.0" prefWidth="414.0">
          <children>
