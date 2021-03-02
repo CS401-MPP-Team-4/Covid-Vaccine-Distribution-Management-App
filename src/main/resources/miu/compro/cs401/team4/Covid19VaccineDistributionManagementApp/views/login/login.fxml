@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #052A3C;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #052A3C;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.controllers.LoginController">
    <left>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -43,10 +43,16 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField layoutX="170.0" layoutY="177.0" promptText="username" />
-            <TextField layoutX="170.0" layoutY="220.0" promptText="password" />
+            <TextField fx:id="username" layoutX="170.0" layoutY="177.0" promptText="username" />
+            <TextField fx:id="password" layoutX="170.0" layoutY="220.0" promptText="password" />
             <Label layoutX="164.0" layoutY="132.0" text="LOGIN" textFill="#8acbdf" />
-            <Button layoutX="155.0" layoutY="275.0" mnemonicParsing="false" style="-fx-background-color: #8acbdf;" text="Sign in" textFill="WHITE" />
+            <Button fx:id="login" layoutX="266.0" layoutY="316.0" mnemonicParsing="false" onAction="#login" style="-fx-background-color: #8acbdf;" text="Sign in" textFill="WHITE" />
+            <ChoiceBox fx:id="roleId" layoutX="169.0" layoutY="263.0" prefWidth="150.0" />
+            <Label layoutX="76.0" layoutY="267.0" text="Role" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
          </children></AnchorPane>
    </center>
 </BorderPane>
