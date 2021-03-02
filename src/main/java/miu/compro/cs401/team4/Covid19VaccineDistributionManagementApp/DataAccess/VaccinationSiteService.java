@@ -1,6 +1,6 @@
 package miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.DataAccess;
 
-import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models.Staff;
+import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models.*;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,67 +9,70 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StaffService extends RepositoryService<Staff> {
+public class VaccinationSiteService extends RepositoryService<VaccinationSite> {
     @Override
-    public List<Staff> getAll() {
-        List<Staff> StaffList = new ArrayList<>();
+    public List<VaccinationSite> getAll() {
+        List<VaccinationSite> vaccinationSites = new ArrayList<>();
 
         try {
             Statement statement = DBManager.getConnection().createStatement();
             System.out.println("query preparing");
-            String query = "select id, userName, password, jobDescription from Staff";
+            String query = "select id, name, city, state, zipCode from VaccinationSite";
 
             ResultSet resultSet = statement.executeQuery(query);
 
             while (resultSet.next()) {
-                Staff Staff = new Staff(
+                VaccinationSite VaccinationSite = new VaccinationSite(
                         resultSet.getInt(1),
                         resultSet.getString(2),
                         resultSet.getString(3),
-                        resultSet.getString(4));
+                        resultSet.getString(4),
+                        resultSet.getString(5));
 
-                StaffList.add(Staff);
+                vaccinationSites.add(VaccinationSite);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return StaffList;
+        return vaccinationSites;
     }
 
     @Override
-    public Staff getById(Integer id) {
-        Staff Staff = null;
+    public VaccinationSite getById(Integer id) {
+        VaccinationSite VaccinationSite = null;
 
         try {
             System.out.println("query preparing");
-            String query = "select id, userName, password, jobDescription from Staff where id=?";
+            String query = "select id, name, city, state, zipCode from VaccinationSite where id=?";
             PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            Staff = new Staff(
+            VaccinationSite = new VaccinationSite(
                     resultSet.getInt(1),
                     resultSet.getString(2),
                     resultSet.getString(3),
-                    resultSet.getString(4));
+                    resultSet.getString(4),
+                    resultSet.getString(5));
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return Staff;
+        return VaccinationSite;
     }
 
     @Override
-    public boolean add(Staff model) {
+    public boolean add(VaccinationSite model) {
         int result = 0;
         try {
             System.out.println("query preparing");
-            String query = "insert into Staff( userName, password, jobDescription) values (?,?,?)";
+            String query = "insert into VaccinationSite(  name, city, state, zipCode) values (?,?,?,?)";
 
             PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
-            preparedStatement.setString(1, model.getUserName());
-            preparedStatement.setString(2, model.getPassword());
-            preparedStatement.setString(3, model.getJobDescription());
+            preparedStatement.setString(1, model.getName());
+            preparedStatement.setString(2, model.getCity());
+            preparedStatement.setString(3, model.getState());
+            preparedStatement.setString(4, model.getZipCode());
 
             result = preparedStatement.executeUpdate();
 
@@ -80,17 +83,18 @@ public class StaffService extends RepositoryService<Staff> {
     }
 
     @Override
-    public boolean update(Staff model) {
+    public boolean update(VaccinationSite model) {
         int result = 0;
         try {
             System.out.println("query preparing");
-            String query = "update Staff set userName =?, password =?, jobDescription =? where id = ?;";
+            String query = "update VaccinationSite set name =?, city =?, state =?, zipCode =? where id = ?;";
 
             PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
-            preparedStatement.setString(1, model.getUserName());
-            preparedStatement.setString(2, model.getPassword());
-            preparedStatement.setString(3, model.getJobDescription());
-            preparedStatement.setInt(4, model.getId());
+            preparedStatement.setString(1, model.getName());
+            preparedStatement.setString(2, model.getCity());
+            preparedStatement.setString(3, model.getState());
+            preparedStatement.setString(4, model.getZipCode());
+            preparedStatement.setInt(5, model.getId());
 
             result = preparedStatement.executeUpdate();
 
@@ -106,7 +110,7 @@ public class StaffService extends RepositoryService<Staff> {
         int result = 0;
         try {
             System.out.println("query preparing");
-            String query = "delete from Staff where id = ?";
+            String query = "delete from VaccinationSite where id = ?";
 
             PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
             preparedStatement.setInt(1, Id);
