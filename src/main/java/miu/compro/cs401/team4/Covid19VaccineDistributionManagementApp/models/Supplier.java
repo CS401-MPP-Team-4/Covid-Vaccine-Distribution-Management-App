@@ -6,6 +6,13 @@ public class Supplier {
 	private String city;
 	private String phoneNumber;
 
+	public Supplier(int id, String name, String city, String phoneNumber){
+		this.id = id;
+		this.name = name;
+		this.city = city;
+		this.phoneNumber = phoneNumber;
+	}
+
 	// START Getters
 	public int getId() {
 		return id;

@@ -12,7 +12,7 @@ public class CreateEmptyDB {
 		try {
 			Statement statement = connection.createStatement();
 			statement.executeUpdate("CREATE TABLE Supplier(\r\n"
-					+ "    [id] INT IDENTITY (1, 1) NOT NULL,\r\n"
+					+ "    [id] INT IDENTITY (1, 1),\r\n"
 					+ "    [name] NVARCHAR(50) NOT NULL,\r\n"
 					+ "    [address] VARCHAR(150) NULL,\r\n"
 					+ "    [phoneNumber] NVARCHAR(15) NULL,\r\n"
@@ -23,7 +23,7 @@ public class CreateEmptyDB {
 					+ "");
 			
 			statement.executeUpdate("CREATE TABLE Vaccine(\r\n"
-					+ "    [id] INT IDENTITY (1, 1) NOT NULL,\r\n"
+					+ "    [id] INT IDENTITY (1, 1),\r\n"
 					+ "    [name] NVARCHAR(50) NOT NULL,\r\n"
 					+ "    [supplier] INT NULL,\r\n"
 					+ "    \r\n"
@@ -33,7 +33,7 @@ public class CreateEmptyDB {
 					+ ");");
 			
 			statement.executeUpdate("CREATE TABLE VaccinationSite(\r\n"
-					+ "    [id] INT IDENTITY (1, 1) NOT NULL,\r\n"
+					+ "    [id] INT IDENTITY (1, 1),\r\n"
 					+ "    [name] NVARCHAR(50) NOT NULL,\r\n"
 					+ "    [city] VARCHAR(150) NULL,\r\n"
 					+ "    [state] VARCHAR(100) NULL,\r\n"
@@ -46,7 +46,7 @@ public class CreateEmptyDB {
 			
 			
 			statement.executeUpdate("CREATE TABLE SiteStock(\r\n"
-					+ "    [id] INT IDENTITY (1, 1) NOT NULL,\r\n"
+					+ "    [id] INT IDENTITY (1, 1),\r\n"
 					+ "    [vaccinationSite] INT NULL,\r\n"
 					+ "    [vaccine] INT NULL,\r\n"
 					+ "    [stockAmount] INT NOT NULL DEFAULT 0,\r\n"
@@ -58,7 +58,7 @@ public class CreateEmptyDB {
 			
 			
 			statement.executeUpdate("CREATE TABLE Candidate(\r\n"
-					+ "    [id] INT IDENTITY (1, 1) NOT NULL,\r\n"
+					+ "    [id] INT IDENTITY (1, 1),\r\n"
 					+ "    [firstName] NVARCHAR(50) NOT NULL,\r\n"
 					+ "    [middleName] NVARCHAR(50) NOT NULL,\r\n"
 					+ "    [lastName] NVARCHAR(50) NOT NULL,\r\n"
@@ -74,7 +74,7 @@ public class CreateEmptyDB {
 					+ ");");
 			
 			statement.executeUpdate("CREATE TABLE Staff(\r\n"
-					+ "    [id] INT IDENTITY (1, 1) NOT NULL,\r\n"
+					+ "    [id] INT IDENTITY (1, 1),\r\n"
 					+ "\r\n"
 					+ "    [userName] NVARCHAR(50) NOT NULL,\r\n"
 					+ "    [password] NVARCHAR(250) NOT NULL,\r\n"
@@ -84,7 +84,7 @@ public class CreateEmptyDB {
 					+ ");");
 
 			statement.executeUpdate("CREATE TABLE Recipient(\r\n"
-					+ "    [id] INT IDENTITY (1, 1) NOT NULL,\r\n"
+					+ "    [id] INT IDENTITY (1, 1),\r\n"
 					+ "    [dateOfShot] DATE NOT NULL,\r\n"
 					+ "\r\n"
 					+ "    [takenBy] INT NULL,\r\n"
