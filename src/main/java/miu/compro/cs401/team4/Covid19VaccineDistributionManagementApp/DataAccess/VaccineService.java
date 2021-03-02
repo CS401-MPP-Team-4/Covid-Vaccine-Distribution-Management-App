@@ -1,6 +1,7 @@
 package miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.DataAccess;
 
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models.Supplier;
+import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models.Vaccine;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,73 +10,75 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SupplierService extends RepositoryService<Supplier> {
+public class VaccineService extends RepositoryService<Vaccine> {
     @Override
-    public List<Supplier> getAll() {
-        List<Supplier> supplierList = new ArrayList<>();
+    public List<Vaccine> getAll() {
+        List<Vaccine> VaccineList = new ArrayList<>();
 
         try {
             Statement statement = DBManager.getConnection().createStatement();
             System.out.println("query preparing");
-            String query = "select id, name, address, phoneNumber from Supplier";
+            String query = "select id, name, supplier, amount from Vaccine";
 
             ResultSet resultSet = statement.executeQuery(query);
+            SupplierService supplierService = new SupplierService();
 
             while (resultSet.next()) {
-                Supplier supplier = new Supplier(
+                Supplier supplier = supplierService.getById(resultSet.getInt(3));
+                Vaccine vaccine = new Vaccine(
                         resultSet.getInt(1),
                         resultSet.getString(2),
-                        resultSet.getString(3),
-                        resultSet.getString(4));
+                        supplier,
+                        resultSet.getInt(4));
 
-                supplierList.add(supplier);
+                VaccineList.add(vaccine);
             }
-//            DBManager.connection.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return supplierList;
+        return VaccineList;
     }
 
     @Override
-    public Supplier getById(Integer id) {
-        Supplier supplier = null;
+    public Vaccine getById(Integer id) {
+        Vaccine vaccine = null;
 
         try {
             System.out.println("query preparing");
-            String query = "select id, name, address, phoneNumber from Supplier where id=?";
+            String query = "select id, name, supplier, amount from Vaccine where id=?";
             PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
-            supplier = new Supplier(
+
+            SupplierService supplierService = new SupplierService();
+            Supplier supplier = supplierService.getById(resultSet.getInt(resultSet.getString(3)));
+
+            vaccine = new Vaccine(
                     resultSet.getInt(1),
                     resultSet.getString(2),
-                    resultSet.getString(3),
-                    resultSet.getString(4));
+                    supplier,
+                    resultSet.getInt(4));
 
-//            DBManager.connection.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return supplier;
+        return vaccine;
     }
 
     @Override
-    public boolean add(Supplier model) {
+    public boolean add(Vaccine model) {
         int result = 0;
         try {
-            Statement statement = DBManager.getConnection().createStatement();
             System.out.println("query preparing");
-            String query = "insert into Supplier( name, address, phoneNumber) values (?,?,?)";
+            String query = "insert into Vaccine( name, supplier, amount) values (?,?,?)";
 
             PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
             preparedStatement.setString(1, model.getName());
-            preparedStatement.setString(2, model.getAddress());
-            preparedStatement.setString(3, model.getPhoneNumber());
+            preparedStatement.setInt(2, model.getManufacturer().getId());
+            preparedStatement.setInt(3, model.getAmount());
 
             result = preparedStatement.executeUpdate();
 
-//            DBManager.connection.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -83,17 +86,16 @@ public class SupplierService extends RepositoryService<Supplier> {
     }
 
     @Override
-    public boolean update(Supplier model) {
+    public boolean update(Vaccine model) {
         int result = 0;
         try {
-            Statement statement = DBManager.getConnection().createStatement();
             System.out.println("query preparing");
-            String query = "update Supplier set name = ? , address = ?, phoneNumber =? where id = ?;";
+            String query = "update Vaccine set name = ? , supplier = ?, amount =? where id = ?;";
 
             PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
             preparedStatement.setString(1, model.getName());
-            preparedStatement.setString(2, model.getAddress());
-            preparedStatement.setString(3, model.getPhoneNumber());
+            preparedStatement.setInt(2, model.getManufacturer().getId());
+            preparedStatement.setInt(3, model.getAmount());
             preparedStatement.setInt(4, model.getId());
 
             result = preparedStatement.executeUpdate();
@@ -109,9 +111,8 @@ public class SupplierService extends RepositoryService<Supplier> {
     public boolean delete(Integer Id) {
         int result = 0;
         try {
-            Statement statement = DBManager.getConnection().createStatement();
             System.out.println("query preparing");
-            String query = "delete from Supplier where id = ?";
+            String query = "delete from Vaccine where id = ?";
 
             PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
             preparedStatement.setInt(1, Id);
