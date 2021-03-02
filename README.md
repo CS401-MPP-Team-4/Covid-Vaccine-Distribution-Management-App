@@ -2,6 +2,7 @@
 
 Final Course Project for CS-401 Modern Programming Practices
 
+[![Java CI with Maven](https://github.com/CS401-MPP-Team-4/Covid-Vaccine-Distribution-Management-App/actions/workflows/maven.yml/badge.svg?branch=main)](https://github.com/CS401-MPP-Team-4/Covid-Vaccine-Distribution-Management-App/actions/workflows/maven.yml)
 
 **Group Members**
 
