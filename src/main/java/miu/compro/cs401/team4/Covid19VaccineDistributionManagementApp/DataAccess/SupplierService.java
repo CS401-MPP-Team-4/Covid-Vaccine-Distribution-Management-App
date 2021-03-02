@@ -52,7 +52,7 @@ public class SupplierService extends RepositoryService<Supplier> {
 
             PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
             preparedStatement.setString(1, model.getName());
-            preparedStatement.setString(2, model.getCity());
+            preparedStatement.setString(2, model.getAddress());
             preparedStatement.setString(3, model.getPhoneNumber());
 
             result = preparedStatement.executeUpdate();

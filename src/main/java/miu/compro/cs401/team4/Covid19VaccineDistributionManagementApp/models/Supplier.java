@@ -1,17 +1,22 @@
 package miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models;
 
 public class Supplier {
-	private int id;
+	private Integer id;
 	private String name;
-	private String city;
+	private String address; /* City, State */
 	private String phoneNumber;
 
-	public Supplier(int id, String name, String city, String phoneNumber){
+	// START Constructors
+	public Supplier() { }
+
+	public Supplier(Integer id, String name, String address, String phoneNumber) {
 		this.id = id;
 		this.name = name;
-		this.city = city;
+		this.address = address;
 		this.phoneNumber = phoneNumber;
 	}
+
+	// END Constructors
 
 	// START Getters
 	public int getId() {
@@ -20,8 +25,8 @@ public class Supplier {
 	public String getName() {
 		return name;
 	}
-	public String getCity() {
-		return city;
+	public String getAddress() {
+		return address;
 	}
 	public String getPhoneNumber() {
 		return phoneNumber;
