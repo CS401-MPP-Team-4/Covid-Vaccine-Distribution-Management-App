@@ -3,7 +3,7 @@ package miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models;
 public class Supplier {
 	private Integer id;
 	private String name;
-	private String address; /* City, State */
+	private String address; /* address, State */
 	private String phoneNumber;
 
 	// START Constructors
