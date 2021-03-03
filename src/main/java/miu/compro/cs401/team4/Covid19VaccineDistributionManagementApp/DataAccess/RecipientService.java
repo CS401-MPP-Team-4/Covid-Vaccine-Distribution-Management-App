@@ -15,7 +15,7 @@ public class RecipientService extends RepositoryService<Recipient> {
         List<Recipient> RecipientList = new ArrayList<>();
 
         try {
-            Statement statement = DBManager.getConnection().createStatement();
+            Statement statement = DBManager.getInstance().getConnection().createStatement();
             System.out.println("query preparing");
             String query = "select id, dateOfShot, takenBy, vaccine, administeredBy from Recipient";
 
@@ -51,7 +51,7 @@ public class RecipientService extends RepositoryService<Recipient> {
         try {
             System.out.println("query preparing");
             String query = "select id, dateOfShot, takenBy, vaccine, administeredBy from Recipient where id=?";
-            PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
+            PreparedStatement preparedStatement = DBManager.getInstance().getConnection().prepareStatement(query);
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -83,7 +83,7 @@ public class RecipientService extends RepositoryService<Recipient> {
             System.out.println("query preparing");
             String query = "insert into Recipient( dateOfShot, takenBy, vaccine, administeredBy ) values (?,?,?,?)";
 
-            PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
+            PreparedStatement preparedStatement = DBManager.getInstance().getConnection().prepareStatement(query);
             preparedStatement.setDate(1, Date.valueOf(model.getDateOfShot()));
             preparedStatement.setInt(2, model.getTakenBy().getId());
             preparedStatement.setInt(3, model.getVaccine().getId());
@@ -104,7 +104,7 @@ public class RecipientService extends RepositoryService<Recipient> {
             System.out.println("query preparing");
             String query = "update Recipient set dateOfShot =?, takenBy =?, vaccine =?, administeredBy =? where id = ?;";
 
-            PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
+            PreparedStatement preparedStatement = DBManager.getInstance().getConnection().prepareStatement(query);
             preparedStatement.setDate(1, Date.valueOf(model.getDateOfShot()));
             preparedStatement.setInt(2, model.getTakenBy().getId());
             preparedStatement.setInt(3, model.getVaccine().getId());
@@ -127,7 +127,7 @@ public class RecipientService extends RepositoryService<Recipient> {
             System.out.println("query preparing");
             String query = "delete from Recipient where id = ?";
 
-            PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
+            PreparedStatement preparedStatement = DBManager.getInstance().getConnection().prepareStatement(query);
             preparedStatement.setInt(1, Id);
 
 

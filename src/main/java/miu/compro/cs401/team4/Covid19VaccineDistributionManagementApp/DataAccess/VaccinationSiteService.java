@@ -15,7 +15,7 @@ public class VaccinationSiteService extends RepositoryService<VaccinationSite> {
         List<VaccinationSite> vaccinationSites = new ArrayList<>();
 
         try {
-            Statement statement = DBManager.getConnection().createStatement();
+            Statement statement = DBManager.getInstance().getConnection().createStatement();
             System.out.println("query preparing");
             String query = "select id, name, city, state, zipCode from VaccinationSite";
 
@@ -44,7 +44,7 @@ public class VaccinationSiteService extends RepositoryService<VaccinationSite> {
         try {
             System.out.println("query preparing");
             String query = "select id, name, city, state, zipCode from VaccinationSite where id=?";
-            PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
+            PreparedStatement preparedStatement = DBManager.getInstance().getConnection().prepareStatement(query);
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -68,7 +68,7 @@ public class VaccinationSiteService extends RepositoryService<VaccinationSite> {
             System.out.println("query preparing");
             String query = "insert into VaccinationSite(  name, city, state, zipCode) values (?,?,?,?)";
 
-            PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
+            PreparedStatement preparedStatement = DBManager.getInstance().getConnection().prepareStatement(query);
             preparedStatement.setString(1, model.getName());
             preparedStatement.setString(2, model.getCity());
             preparedStatement.setString(3, model.getState());
@@ -89,7 +89,7 @@ public class VaccinationSiteService extends RepositoryService<VaccinationSite> {
             System.out.println("query preparing");
             String query = "update VaccinationSite set name =?, city =?, state =?, zipCode =? where id = ?;";
 
-            PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
+            PreparedStatement preparedStatement = DBManager.getInstance().getConnection().prepareStatement(query);
             preparedStatement.setString(1, model.getName());
             preparedStatement.setString(2, model.getCity());
             preparedStatement.setString(3, model.getState());
@@ -112,7 +112,7 @@ public class VaccinationSiteService extends RepositoryService<VaccinationSite> {
             System.out.println("query preparing");
             String query = "delete from VaccinationSite where id = ?";
 
-            PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
+            PreparedStatement preparedStatement = DBManager.getInstance().getConnection().prepareStatement(query);
             preparedStatement.setInt(1, Id);
 
             result = preparedStatement.executeUpdate();
