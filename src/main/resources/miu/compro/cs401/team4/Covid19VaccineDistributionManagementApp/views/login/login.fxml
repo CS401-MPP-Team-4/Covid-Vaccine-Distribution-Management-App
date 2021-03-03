@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -47,7 +49,15 @@
             <TextField fx:id="password" layoutX="170.0" layoutY="220.0" promptText="password" />
             <Label layoutX="164.0" layoutY="132.0" text="LOGIN" textFill="#8acbdf" />
             <Button fx:id="login" layoutX="266.0" layoutY="316.0" mnemonicParsing="false" onAction="#login" style="-fx-background-color: #8acbdf;" text="Sign in" textFill="WHITE" />
-            <ChoiceBox fx:id="roleId" layoutX="169.0" layoutY="263.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="roleChoiceBox" layoutX="169.0" layoutY="263.0" prefWidth="150.0">
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="Admin" />
+                     <String fx:value="Staff" />
+                     <String fx:value="Candidate" />
+                  </FXCollections>
+               </items>
+            </ChoiceBox>
             <Label layoutX="76.0" layoutY="267.0" text="Role" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
