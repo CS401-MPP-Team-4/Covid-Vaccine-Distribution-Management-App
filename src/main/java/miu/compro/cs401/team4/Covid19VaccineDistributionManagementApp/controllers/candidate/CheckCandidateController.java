@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class CheckCandidateController {
 
-    final static CandidateService candidateService = new CandidateService();
+    static final CandidateService candidateService = new CandidateService();
 
     @FXML
     public TextField candidateID;
@@ -23,7 +23,7 @@ public class CheckCandidateController {
 
     public void checkCandidateStatus(ActionEvent event) {
        Candidate candidate =  candidateService.getById(Integer.parseInt(candidateID.getText()));
-       statusInfo.setText(new StringBuilder("You are: ").append(candidate.getStatus()).toString());
+       statusInfo.setText("You are: " + candidate.getStatus());
 
     }
 
