@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #052A3C;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.controllers.RegisterCandidateController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #052A3C;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.controllers.candidate.RegisterCandidateController">
     <left>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
@@ -19,6 +19,7 @@
                         <Image url="@../../images/sample.PNG" />
                     </image>
                 </ImageView>
+                <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: #8acbdf;" text="Back" textFill="WHITE" />
             </children></AnchorPane>
     </left>
     <center>
@@ -63,16 +64,9 @@
                 <TextField fx:id="lastName" layoutX="170.0" layoutY="141.0" promptText="lastname" />
                 <TextField fx:id="age" layoutX="170.0" layoutY="180.0" promptText="age" />
                 <TextField fx:id="ssn" layoutX="170.0" layoutY="217.0" promptText="ssn" />
-                <TextField fx:id="password" layoutX="170.0" layoutY="254.0" promptText="status" />
-                <Button fx:id="login" layoutX="242.0" layoutY="338.0" mnemonicParsing="false" onAction="#registerCandidate" prefHeight="26.0" prefWidth="76.0" style="-fx-background-color: #8acbdf;" text="Register" textFill="WHITE" />
-                <ChoiceBox fx:id="roleChoiceBox" layoutX="169.0" layoutY="290.0" prefWidth="150.0">
-                    <items>
-                        <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="Admin" />
-                            <String fx:value="Staff" />
-                            <String fx:value="Candidate" />
-                        </FXCollections>
-                    </items>
+                <TextField fx:id="status" layoutX="170.0" layoutY="254.0" promptText="status" />
+                <Button fx:id="registerCandidate" layoutX="255.0" layoutY="336.0" mnemonicParsing="false" onAction="#registerCandidate" prefHeight="26.0" prefWidth="76.0" style="-fx-background-color: #8acbdf;" text="Register" textFill="WHITE" />
+                <ChoiceBox fx:id="vaccinationSiteChoiceBox" layoutX="169.0" layoutY="290.0" prefHeight="27.0" prefWidth="162.0">
                 </ChoiceBox>
                 <Label layoutX="46.0" layoutY="293.0" text="Vaccination Site" textFill="WHITE">
                     <font>

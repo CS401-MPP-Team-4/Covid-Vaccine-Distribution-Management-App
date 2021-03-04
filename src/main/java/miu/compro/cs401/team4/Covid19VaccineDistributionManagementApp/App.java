@@ -8,6 +8,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
+import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.DataAccess.LoginService;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -22,10 +23,11 @@ public class App extends Application {
 
 	@Override
 	public void start(Stage stage) throws IOException {
-		scene = new Scene(loadFXML(Navigations.LOGIN.getValue()), (stage.getX() + stage.getWidth()), stage.getY());
+		scene = new Scene(loadFXML(Navigations.CANDIDATE.getValue()), (stage.getX() + stage.getWidth()), stage.getY());
 		scene.getStylesheets().addAll(this.getClass().getResource("css/style.css").toExternalForm());
 		stage.setTitle("CVDMS");
 		stage.setScene(scene);
+//		System.out.println(LoginService.login("carl", "pass1234", "admin"));
 		stage.show();
 		primaryStage = stage;
 	}
