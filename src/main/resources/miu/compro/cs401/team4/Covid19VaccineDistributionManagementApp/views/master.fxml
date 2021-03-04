@@ -29,6 +29,11 @@
 						<MenuItem mnemonicParsing="false" text="Vaccination Site" onAction="#jumptToVaccinationSite" />
 					</items>
 				</Menu>
+				<Menu mnemonicParsing="false" text="Staff">
+					<items>
+						<MenuItem mnemonicParsing="false" text="Staff" onAction="#jumptToStaff" />
+					</items>
+				</Menu>
 				<Menu mnemonicParsing="false" text="Help">
 					<items>
 						<MenuItem mnemonicParsing="false" text="About MyHelloApp" />
