@@ -1,6 +1,5 @@
 package miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.controllers.candidate;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -21,13 +20,13 @@ public class CheckCandidateController {
     @FXML
     public Label statusInfo;
 
-    public void checkCandidateStatus(ActionEvent event) {
+    public void checkCandidateStatus() {
        Candidate candidate =  candidateService.getById(Integer.parseInt(candidateID.getText()));
        statusInfo.setText("You are: " + candidate.getStatus());
 
     }
 
-    public void back(ActionEvent event) throws IOException {
+    public void back() throws IOException {
         App.setRoot(Navigations.CANDIDATE.getValue());
     }
 }

@@ -2,7 +2,6 @@ package miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.controlle
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
@@ -31,7 +30,7 @@ public class RegisterCandidateController {
     public TextField ssn;
 
     @FXML
-    public ChoiceBox vaccinationSiteChoiceBox;
+    public ChoiceBox<VaccinationSite> vaccinationSiteChoiceBox;
 
     public void initialize() {
 
@@ -41,15 +40,15 @@ public class RegisterCandidateController {
     }
 
 
-    public void registerCandidate(ActionEvent event) {
+    public void registerCandidate() {
         CandidateService candidateService = new CandidateService();
-        VaccinationSite vacSite = (VaccinationSite) vaccinationSiteChoiceBox.getSelectionModel().getSelectedItem();
+        VaccinationSite vacSite = vaccinationSiteChoiceBox.getSelectionModel().getSelectedItem();
         candidateService.add(new Candidate(0, firstName.getText(), lastName.getText(), Byte.parseByte(age.getText()),  ssn.getText(),"NOT VACCINATED", LocalDate.now(), vacSite));
         clearFields();
         App.showSuccess("Registered Successfully!");
     }
 
-    public void back(ActionEvent event) throws IOException {
+    public void back() throws IOException {
         App.setRoot(Navigations.CANDIDATE.getValue());
     }
 
