@@ -43,7 +43,7 @@
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </Label>
-                <Label layoutX="43.0" layoutY="221.0" prefHeight="20.0" prefWidth="89.0" text="Social Security" textFill="WHITE">
+                <Label layoutX="43.0" layoutY="221.0" prefHeight="20.0" prefWidth="98.0" text="Social Security" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
@@ -53,12 +53,12 @@
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </Label>
-                <TextField fx:id="firstName" layoutX="170.0" layoutY="105.0" promptText="firstname" />
-                <TextField fx:id="lastName" layoutX="170.0" layoutY="141.0" promptText="lastname" />
-                <TextField fx:id="age" layoutX="170.0" layoutY="180.0" promptText="age" />
-                <TextField fx:id="ssn" layoutX="170.0" layoutY="217.0" promptText="ssn" />
+                <TextField fx:id="firstName" layoutX="170.0" layoutY="105.0" prefHeight="26.0" prefWidth="155.0" promptText="firstname" />
+                <TextField fx:id="lastName" layoutX="170.0" layoutY="141.0" prefHeight="26.0" prefWidth="155.0" promptText="lastname" />
+                <TextField fx:id="age" layoutX="170.0" layoutY="180.0" prefHeight="26.0" prefWidth="155.0" promptText="age" />
+                <TextField fx:id="ssn" layoutX="170.0" layoutY="218.0" prefHeight="26.0" prefWidth="156.0" promptText="ssn" />
                 <Button fx:id="registerCandidate" layoutX="250.0" layoutY="294.0" mnemonicParsing="false" onAction="#registerCandidate" prefHeight="26.0" prefWidth="76.0" style="-fx-background-color: #8acbdf;" text="Register" textFill="WHITE" />
-                <ChoiceBox fx:id="vaccinationSiteChoiceBox" layoutX="169.0" layoutY="255.0" prefHeight="27.0" prefWidth="155.0">
+                <ChoiceBox fx:id="vaccinationSiteChoiceBox" layoutX="171.0" layoutY="256.0" prefHeight="27.0" prefWidth="153.0">
                 </ChoiceBox>
                 <Label layoutX="43.0" layoutY="260.0" text="Vaccination Site" textFill="WHITE">
                     <font>
