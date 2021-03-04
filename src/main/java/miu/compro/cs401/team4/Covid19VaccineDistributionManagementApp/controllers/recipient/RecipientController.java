@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 
 public class RecipientController extends AbstractCRUDListController<Candidate> {
 
-    static final RecipientService repositoryService = new RecipientService();
+    static final RecipientService recipientService = new RecipientService();
     static final CandidateService candidateService = new CandidateService();
     static final VaccineService vaccineService = new VaccineService();
     @FXML
@@ -41,7 +41,7 @@ public class RecipientController extends AbstractCRUDListController<Candidate> {
     TableColumn<Candidate, Integer> cStatus;
 
     @FXML
-    TableView recipientTable;
+    TableView<Recipient> recipientTable;
 
 
     @Override
@@ -96,15 +96,19 @@ public class RecipientController extends AbstractCRUDListController<Candidate> {
                             candidate.setStatus("VACCINATED");
                             candidateService.update(candidate);
 
-//                            ChoiceBox<Vaccine> choiceBox = getCrudTable().getItems().get(getIndex())
-
-
+//                            ChoiceBox<Vaccine> choiceBox = getCrudTable().getItems().get(getIndex()))
 
                             Recipient recipient = new Recipient();
                             recipient.setTakenBy(candidate);
                             recipient.setDateOfShot(LocalDate.now());
                             recipient.setAdministeredBy(new Staff(1));
-//                            recipient.setVaccine();
+                            Vaccine vaccine = new Vaccine();
+                            vaccine.setId(1);
+                            recipient.setVaccine(vaccine);
+                            recipientService.add(recipient);
+                            getCrudTable().getItems().remove(getIndex());
+                            recipientTable.getItems().removeAll();
+                            recipientTable.getItems().addAll(recipientService.getAll());
 
 
                         });
