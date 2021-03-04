@@ -2,38 +2,41 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.controllers.recipient.RecipientController">
-   <children>
-      <SplitPane dividerPositions="0.5" layoutX="2.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0">
-        <items>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="196.0" prefWidth="612.0">
-                <TableView fx:id="crudTable" layoutX="4.0" layoutY="3.0" prefHeight="228.0" prefWidth="598.0" AnchorPane.bottomAnchor="-32.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <columns>
-                        <TableColumn fx:id="cFirstName" prefWidth="116.0" text="First Name" />
-                        <TableColumn fx:id="cLastName" prefWidth="116.0" text="Last Name" />
-                        <TableColumn fx:id="cAge" prefWidth="120.0" text="Age" />
-                        <TableColumn fx:id="cStatus" prefWidth="120.0" text="Status" />
+    <children>
+        <SplitPane dividerPositions="0.5" layoutX="2.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="196.0" prefWidth="612.0">
+                    <TableView fx:id="crudTable" layoutX="4.0" layoutY="3.0" prefHeight="228.0" prefWidth="598.0"
+                               AnchorPane.bottomAnchor="-32.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                               AnchorPane.topAnchor="0.0">
+                        <columns>
+                            <TableColumn fx:id="cFirstName" prefWidth="116.0" text="First Name"/>
+                            <TableColumn fx:id="cLastName" prefWidth="116.0" text="Last Name"/>
+                            <TableColumn fx:id="cAge" prefWidth="120.0" text="Age"/>
 
 
-                    </columns>
+                        </columns>
 
-                </TableView>
-            </AnchorPane>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="163.0" prefWidth="598.0">
-                <TableView fx:id="recipientTable" layoutX="4.0" layoutY="3.0" prefHeight="228.0" prefWidth="598.0" AnchorPane.bottomAnchor="-32.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <columns>
-                        <TableColumn fx:id="rFirstName" prefWidth="116.0" text="First Name" />
-                        <TableColumn fx:id="rLastName" prefWidth="116.0" text="Last Name" />
-                        <TableColumn fx:id="rAge" prefWidth="120.0" text="Age" />
-                        <TableColumn fx:id="rStatus" prefWidth="120.0" text="Status" />
+                    </TableView>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="163.0" prefWidth="598.0">
+                    <TableView fx:id="recipientTable" layoutX="4.0" layoutY="3.0" prefHeight="228.0" prefWidth="598.0"
+                               AnchorPane.bottomAnchor="-32.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                               AnchorPane.topAnchor="0.0">
+                        <columns>
+                            <TableColumn fx:id="rFirstName" prefWidth="116.0" text="First Name"/>
+                            <TableColumn fx:id="rLastName" prefWidth="116.0" text="Last Name"/>
+                            <TableColumn fx:id="rAge" prefWidth="120.0" text="Age"/>
+                            <TableColumn fx:id="rStatus" prefWidth="120.0" text="Status"/>
 
 
-                    </columns>
-                </TableView>
-            </AnchorPane>
-        </items>
-      </SplitPane>
-   </children>
+                        </columns>
+                    </TableView>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
 </AnchorPane>
