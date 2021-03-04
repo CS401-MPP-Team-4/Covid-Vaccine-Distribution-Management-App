@@ -37,6 +37,11 @@ public class MasterController implements Initializable {
 	private void jumptToVaccinationSite() throws IOException {
 		loadChildView(Navigations.VACCINATION_SITE);
 	}
+
+	@FXML
+	public void jumptToRecipient(ActionEvent event) throws IOException {
+		loadChildView(Navigations.RECIPIENT);
+	}
 	
 	@FXML
 	private void exitApp() throws IOException {

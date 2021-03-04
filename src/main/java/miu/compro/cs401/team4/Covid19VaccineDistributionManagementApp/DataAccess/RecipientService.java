@@ -29,14 +29,14 @@ public class RecipientService extends RepositoryService<Recipient> {
                 Vaccine vaccine = vaccineService.getById(resultSet.getInt(4));
                 Staff staff = staffService.getById(resultSet.getInt(5));
 
-                Recipient Recipient = new Recipient(
+                Recipient recipient = new Recipient(
                         resultSet.getInt(1),
                         resultSet.getDate(2).toLocalDate(),
                         candidate,
                         vaccine,
                         staff);
 
-                RecipientList.add(Recipient);
+                RecipientList.add(recipient);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -46,7 +46,7 @@ public class RecipientService extends RepositoryService<Recipient> {
 
     @Override
     public Recipient getById(Integer id) {
-        Recipient Recipient = null;
+        Recipient recipient = null;
 
         try {
             System.out.println("query preparing");
@@ -63,7 +63,7 @@ public class RecipientService extends RepositoryService<Recipient> {
             Vaccine vaccine = vaccineService.getById(resultSet.getInt(4));
             Staff staff = staffService.getById(resultSet.getInt(5));
 
-            Recipient = new Recipient(
+            recipient = new Recipient(
                     resultSet.getInt(1),
                     resultSet.getDate(2).toLocalDate(),
                     candidate,
@@ -73,7 +73,7 @@ public class RecipientService extends RepositoryService<Recipient> {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return Recipient;
+        return recipient;
     }
 
     @Override

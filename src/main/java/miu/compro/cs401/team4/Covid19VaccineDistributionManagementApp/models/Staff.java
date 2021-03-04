@@ -15,6 +15,10 @@ public class Staff extends Model {
 		this.password = password;
 		this.jobDescription = jobDescription;
 	}
+
+	public Staff(Integer id) {
+		this.id = id;
+	}
 	// END Constructors
 
 	// START Getters
@@ -31,9 +35,23 @@ public class Staff extends Model {
 		return jobDescription;
 	}
 	// END Getters
+	
+	
 
 	@Override
 	public String toString() {
 		return String.format("Name: %s. Job Description: %s.", userName, jobDescription);
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setJobDescription(String jobDescription) {
+		this.jobDescription = jobDescription;
 	}
 }

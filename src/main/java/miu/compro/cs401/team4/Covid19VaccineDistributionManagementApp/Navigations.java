@@ -9,7 +9,7 @@ public enum Navigations {
 	SUPPLIER_FORM("views/supplier/supplier-form"),
 	VACCINATION_SITE("views/vaccinationsite/vaccination-site"),
 	VACCINATION_SITE_FORM("views/vaccinationsite/vaccination-site-form"),
-	RECIPIENT("views/recipient"),
+	RECIPIENT("views/recipient/recipient"),
 	CANDIDATE("views/candidate/candidate"),
 	REGISTER_CANDIDATE("views/candidate/register-candidate"),
 	CHECK_CANDIDATE_STATUS("views/candidate/check-candidate-status"),
