@@ -67,7 +67,7 @@ public class App extends Application {
 
 	public static Optional<ButtonType> showConfirm(String message) {
 		Alert alert = new Alert(AlertType.CONFIRMATION, message);
-		alert.setTitle("CVDMS");
+		alert.setTitle(APP_TITLE);
 		return alert.showAndWait();
 	}
 
