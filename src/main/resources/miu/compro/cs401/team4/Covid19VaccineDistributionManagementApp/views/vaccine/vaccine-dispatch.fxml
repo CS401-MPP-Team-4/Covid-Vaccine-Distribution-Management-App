@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -12,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.controllers.vaccine.VaccineFormController">
+<VBox xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.controllers.vaccine.VaccineDispatchController">
    <children>
       <GridPane hgap="10.0" vgap="10.0">
          <columnConstraints>
@@ -25,19 +24,10 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <VBox>
-               <children>
-                  <Label id="lblName" text="Name" />
-                  <TextField id="txtName" fx:id="txtName" promptText="Enter Name..." />
-               </children>
-               <padding>
-                  <Insets top="5.0" />
-               </padding>
-            </VBox>
             <VBox GridPane.rowIndex="1">
                <children>
-                  <Label id="lblSupplier" text="Supplier" />
-                  <ChoiceBox id="ccbSupplier" fx:id="ccbSupplier" prefHeight="27.0" prefWidth="184.0" />
+                  <Label id="lblSite" text="Supplier" />
+                  <ChoiceBox id="ccbSite" fx:id="ccbSite" prefHeight="27.0" prefWidth="359.0" />
                </children>
                <padding>
                   <Insets top="5.0" />
@@ -52,25 +42,14 @@
                   <Insets top="5.0" />
                </padding>
             </VBox>
-            <VBox GridPane.rowIndex="3">
-               <children>
-                  <Label id="lblInstruction" text="Instruction" />
-                  <TextArea id="txtInstruction" fx:id="txtInstruction" prefHeight="126.0" prefWidth="445.0" promptText="Enter Instruction..." />
-               </children>
-               <padding>
-                  <Insets top="5.0" />
-               </padding>
-            </VBox>
          </children>
          <padding>
             <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
          </padding>
       </GridPane>
-      <HBox alignment="CENTER_RIGHT" spacing="10.0" VBox.vgrow="NEVER">
+      <HBox alignment="CENTER" spacing="10.0" VBox.vgrow="NEVER">
          <children>
-           <Button id="btnCreate" mnemonicParsing="false" prefHeight="27.0" prefWidth="113.0" onAction="#create" text="Create New..." />
-            <Button id="btnSave" mnemonicParsing="false" prefHeight="27.0" prefWidth="113.0" onAction="#save" text="Save" />
-            <Button id="btnCancel" mnemonicParsing="false" prefHeight="27.0" prefWidth="113.0" onAction="#cancel" text="Cancel" />
+            <Button id="btnSave" mnemonicParsing="false" onAction="#dispatch" prefHeight="27.0" prefWidth="113.0" text="Dispatch" />
          </children>
          <padding>
             <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />

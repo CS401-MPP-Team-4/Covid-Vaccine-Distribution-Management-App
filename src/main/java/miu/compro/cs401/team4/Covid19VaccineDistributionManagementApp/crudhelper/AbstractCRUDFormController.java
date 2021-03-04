@@ -78,10 +78,10 @@ public abstract class AbstractCRUDFormController<T extends Model> extends Abstra
 	public void save() {
 		runTask(() -> {
 			getFormData();
-			System.out.println(((Supplier) currentModel).getName());
+
 			if (getMode() == FormMode.ADD) {
-				Integer newId = getRepositoryService().addNew(currentModel);
-				setCurrentId(newId);
+				getRepositoryService().add(currentModel);
+				setCurrentId(null);
 			} else {
 				getRepositoryService().update(currentModel);
 				getModelDetails(currentModel.getId());

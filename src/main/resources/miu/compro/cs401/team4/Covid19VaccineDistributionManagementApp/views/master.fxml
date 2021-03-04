@@ -36,7 +36,7 @@
 			</menus>
 		</MenuBar>
 		
-		<VBox fx:id="mainContainer" style="-fx-background-color: green;" VBox.vgrow="ALWAYS" />
+		<VBox fx:id="mainContainer" VBox.vgrow="ALWAYS" />
 
 		<HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
 			<children>
