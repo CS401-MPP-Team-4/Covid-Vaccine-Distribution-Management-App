@@ -7,6 +7,8 @@ public enum Navigations {
 	VACCINE_FORM("views/vaccine/vaccine-form"),
 	SUPPLIER("views/supplier/supplier"),
 	SUPPLIER_FORM("views/supplier/supplier-form"),
+	VACCINATION_SITE("views/vaccinationsite/vaccination-site"),
+	VACCINATION_SITE_FORM("views/vaccinationsite/vaccination-site-form"),
 	RECIPIENT("views/recipient");
 
 	private String value;

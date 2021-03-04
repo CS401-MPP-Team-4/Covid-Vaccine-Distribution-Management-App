@@ -130,14 +130,16 @@ public class VaccineService extends RepositoryService<Vaccine> {
     public boolean dispatch(Integer vaccineId, Integer siteId, Integer quantity) {
 //        int result = 0;
 //        try {
-////            System.out.println("query preparing");
-////            String query = "update SiteStock set name = ? , supplier = ?, amount =? where id = ?;";
-////
-////            PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
-////            preparedStatement.setInt(1, Id);
-////
-////
-////            result = preparedStatement.executeUpdate();
+//            System.out.println("query preparing");
+//            String query1 = "select * from SiteStock set name = ? , supplier = ?, amount =? where id = ?;";
+//            PreparedStatement preparedStatement1 = DBManager.getConnection().prepareStatement("");
+//            String query = "update SiteStock set name = ? , supplier = ?, amount =? where id = ?;";
+//
+//            PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
+//            preparedStatement.setInt(1, Id);
+//
+//
+//            result = preparedStatement.executeUpdate();
 //
 //        } catch (SQLException throwables) {
 //            throwables.printStackTrace();

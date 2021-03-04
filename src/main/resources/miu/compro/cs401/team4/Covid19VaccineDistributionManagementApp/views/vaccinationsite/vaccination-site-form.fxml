@@ -12,13 +12,14 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.controllers.supplier.SupplierFormController">
+<VBox xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.controllers.vaccinationsite.VaccinationSiteFormController">
    <children>
       <GridPane hgap="10.0" vgap="10.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
          </columnConstraints>
          <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
@@ -35,8 +36,8 @@
             </VBox>
            <VBox GridPane.rowIndex="1">
                <children>
-                  <Label id="lblAddress" text="Address" />
-                  <TextField id="txtAddress" fx:id="txtAddress" promptText="City, State ..." />
+                  <Label id="lblCity" text="City" />
+                  <TextField id="txtCity" fx:id="txtCity" promptText="Enter City ..." />
                </children>
                <padding>
                   <Insets top="5.0" />
@@ -44,8 +45,18 @@
             </VBox>
              <VBox GridPane.rowIndex="2">
                <children>
-                  <Label id="lblPhoneNumber" text="Phone Number" />
-                  <TextField id="txtPhoneNumber" fx:id="txtPhoneNumber" promptText="Enter Phone Number..." />
+                  <Label id="lblState" text="State" />
+                  <TextField id="txtState" fx:id="txtState" promptText="Enter State ..." />
+               </children>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </VBox>
+            
+             <VBox GridPane.rowIndex="3">
+               <children>
+                  <Label id="lblZipCode" text="Zip Code" />
+                  <TextField id="txtZipCode" fx:id="txtZipCode" promptText="Enter Zip Code..." />
                </children>
                <padding>
                   <Insets top="5.0" />

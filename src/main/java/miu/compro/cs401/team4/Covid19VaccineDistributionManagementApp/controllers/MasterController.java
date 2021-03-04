@@ -33,6 +33,11 @@ public class MasterController implements Initializable {
 	}
 	
 	@FXML
+	private void jumptToVaccinationSite() throws IOException {
+		loadChildView(Navigations.VACCINATION_SITE);
+	}
+	
+	@FXML
 	private void exitApp() throws IOException {
 		Platform.exit();
 	}
