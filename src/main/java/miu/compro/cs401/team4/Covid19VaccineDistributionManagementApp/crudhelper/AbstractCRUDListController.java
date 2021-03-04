@@ -27,20 +27,41 @@ import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.utils.Bind
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.utils.DialogWindow;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.utils.Utils;
 
+/**
+ * abstract class of the all controllers which are implementing list of CRUD
+ * 
+ * @param T {@code extends Model} generic type of target Model class. Example: Supplier 
+ * */
 public abstract class AbstractCRUDListController<T extends Model> extends AbstractCRUDController<T>
 		implements Initializable {
+	
+	/**
+	 * Returns reference of main TableView. tx:id of TableView must be equal "crudTable" in the FXML file
+	 * */
 	@FXML
 	TableView<T> crudTable;
 
+	/**
+	 * Reference of main Create button. tx:id of Button must be equal "btnCreate" in the FXML file
+	 * */
 	@FXML
 	Button btnCreate;
 
+	/**
+	 * Reference of main Delete button. tx:id of Button must be equal "btnDelete" in the FXML file
+	 * */
 	@FXML
 	Button btnDelete;
 
+	/**
+	 * Reference of main Edit button. tx:id of Button must be equal "btnEdit" in the FXML file
+	 * */
 	@FXML
 	Button btnEdit;
 
+	/**
+	 * id of currently selected model
+	 * */
 	protected Integer currentId;
 
 	@Override
@@ -51,18 +72,25 @@ public abstract class AbstractCRUDListController<T extends Model> extends Abstra
 		App.setUppAppSubTitle(getTitle());
 		init(location, resources);
 	}
-
+	
+	/**
+	 * When called the controller initialized.
+	 * Inherited controllers must implement that method and can place some initialization staffs such as "fill comboboxes".
+	 * */
 	public abstract void init(URL location, ResourceBundle resources);
 
+	/**
+	 * Inherited controllers must implement that method and should return URL of form view. See {@code Supplier}
+	 * */
 	public abstract String getFormUrl();
 
-	public List<T> fetchData() throws SQLException {
-		return getRepositoryService().getAll();
-	}
-
+	/**
+	 * Refreshes table data from the database
+	 * */
 	public void refreshData() {
 		runTask(() -> {
-			ObservableList<T> list = FXCollections.observableList(fetchData());
+			List<T> data = getRepositoryService().getAll();
+			ObservableList<T> list = FXCollections.observableList(data);
 			crudTable.setItems(list);
 			if (list.size() > 0) {
 				setCurrentId(list.get(0).getId());
@@ -71,10 +99,6 @@ public abstract class AbstractCRUDListController<T extends Model> extends Abstra
 			}
 //			throw new Exception("Error Test");
 		});
-	}
-
-	public T getById(Integer id) {
-		return null;
 	}
 
 	private void bindColums() {
@@ -96,6 +120,9 @@ public abstract class AbstractCRUDListController<T extends Model> extends Abstra
 		});
 	}
 	
+	/**
+	 * Fetches currenty selected model's detail information then fills detail section with it.
+	 * */
 	public void getModelDetails(Integer id) {
 		runTask(() -> {
 			if(id != null) {				
@@ -130,6 +157,10 @@ public abstract class AbstractCRUDListController<T extends Model> extends Abstra
 		onCurrentIdChanged(id);
 	}
 
+	/**
+	 * Shows form view with Add mode.
+	 * Button "Create" calls that method. See the button's onAction attribute.
+	 * */
 	@FXML
 	public void create() {
 		System.out.println(this.getFormUrl());
@@ -141,6 +172,10 @@ public abstract class AbstractCRUDListController<T extends Model> extends Abstra
 		refreshData();
 	}
 
+	/**
+	 * Shows form view with Edit mode.
+	 * Button "Edit" calls that method. See the button's onAction attribute.
+	 * */
 	@FXML
 	public void edit() {
 		DialogWindow<AbstractCRUDFormController<T>> window = DialogWindow.createDialog(this.getFormUrl(), App.primaryStage);
@@ -151,6 +186,10 @@ public abstract class AbstractCRUDListController<T extends Model> extends Abstra
 		refreshData();
 	}
 
+	/**
+	 * Deletes currently selected model from the database.
+	 * Button "Delete" calls that method. See the button's onAction attribute.
+	 * */
 	@FXML
 	public void delete() {
 		if (App.showConfirm("Are you sure to delete?").get() == ButtonType.OK) {
@@ -176,6 +215,9 @@ public abstract class AbstractCRUDListController<T extends Model> extends Abstra
 		}
 	}
 
+	/**
+	 * Returns reference of main TableView. Can override when tx:id of TableView not equals to "crudTable"
+	 * */
 	public TableView<T> getCrudTable() {
 		return crudTable;
 	}
