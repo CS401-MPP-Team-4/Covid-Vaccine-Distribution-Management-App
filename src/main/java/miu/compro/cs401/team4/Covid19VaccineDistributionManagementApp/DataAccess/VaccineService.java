@@ -1,6 +1,8 @@
 package miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.DataAccess;
 
+import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models.SiteStock;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models.Supplier;
+import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models.VaccinationSite;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models.Vaccine;
 
 import java.sql.PreparedStatement;
@@ -50,8 +52,9 @@ public class VaccineService extends RepositoryService<Vaccine> {
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
 
+//            resultSet.next();
             SupplierService supplierService = new SupplierService();
-            Supplier supplier = supplierService.getById(resultSet.getInt(resultSet.getString(3)));
+            Supplier supplier = supplierService.getById(resultSet.getInt(3));
 
             vaccine = new Vaccine(
                     resultSet.getInt(1),
@@ -125,4 +128,35 @@ public class VaccineService extends RepositoryService<Vaccine> {
         }
         return result > 0;
     }
+    
+    public boolean dispatch(Integer vaccineId, Integer siteId, Integer quantity) {
+        int result = 0;
+        try {
+        	var stockService= new SiteStockService();
+        	var stock = stockService.getByOthers(vaccineId, siteId);
+        	Vaccine vaccine = getById(vaccineId);
+        	
+        	vaccine.setAmount(vaccine.getAmount() - quantity);
+        	if(update(vaccine)) {
+        		if(stock == null) {
+            		stock = new SiteStock(null, 
+            				new VaccinationSite(siteId, null, null, null, null),
+            				vaccine,
+        					quantity);
+            		return stockService.add(stock);
+            	}
+            	else {
+            		stock.setStockAmount(quantity + stock.getStockAmount());
+            		return stockService.update(stock);
+            	}
+        	}
+        	
+        } catch (Exception throwables) {
+            throwables.printStackTrace();
+        }
+ 
+    	return false;
+    }
+    
+    
 }

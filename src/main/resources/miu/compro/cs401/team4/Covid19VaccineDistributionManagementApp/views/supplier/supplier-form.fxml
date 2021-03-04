@@ -22,7 +22,6 @@
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
             <VBox>
@@ -36,7 +35,7 @@
             </VBox>
            <VBox GridPane.rowIndex="1">
                <children>
-                  <Label id="lblAddress" text="Name" />
+                  <Label id="lblAddress" text="Address" />
                   <TextField id="txtAddress" fx:id="txtAddress" promptText="City, State ..." />
                </children>
                <padding>
@@ -45,7 +44,7 @@
             </VBox>
              <VBox GridPane.rowIndex="2">
                <children>
-                  <Label id="lblPhoneNumber" text="Name" />
+                  <Label id="lblPhoneNumber" text="Phone Number" />
                   <TextField id="txtPhoneNumber" fx:id="txtPhoneNumber" promptText="Enter Phone Number..." />
                </children>
                <padding>

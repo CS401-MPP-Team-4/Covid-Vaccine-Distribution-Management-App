@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Optional;
 import java.util.stream.Stream;
 
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -17,6 +18,7 @@ public final class Utils {
 		Stream.of(cls.getDeclaredFields())
 		.filter(f -> f.getType().isAssignableFrom(Label.class) 
 				|| f.getType().isAssignableFrom(TextField.class)
+				|| f.getType().isAssignableFrom(ChoiceBox.class)
 				).forEach(ctrl -> {
 			if (ctrl.isAnnotationPresent(Bind.class)) {
 				Bind annotation = (Bind) ctrl.getAnnotation(Bind.class);
@@ -43,6 +45,11 @@ public final class Utils {
 			TextField txt = (TextField) control;
 			txt.setText(value.map(r -> String.valueOf(r)).orElse((String) emptyValue));
 		}
+		
+		else if (control instanceof ChoiceBox<?>) {
+			ChoiceBox ccb = (ChoiceBox) control;
+			ccb.setValue(value.orElse(null));
+		}
 	}
 	
 	public static void getBoundedData(Object model, Object controller, Object emptyValue) {
@@ -51,6 +58,7 @@ public final class Utils {
 		Stream.of(cls.getDeclaredFields())
 		.filter(f -> f.getType().isAssignableFrom(Label.class) 
 				|| f.getType().isAssignableFrom(TextField.class)
+				|| f.getType().isAssignableFrom(ChoiceBox.class)
 				).forEach(ctrl -> {
 			if (ctrl.isAnnotationPresent(Bind.class)) {
 				Bind annotation = (Bind) ctrl.getAnnotation(Bind.class);
@@ -72,6 +80,10 @@ public final class Utils {
 		if (control instanceof TextField) {
 			TextField txt = (TextField) control;
 			value = txt.getText();
+		}
+		else if (control instanceof ChoiceBox) {
+			ChoiceBox ccb = (ChoiceBox) control;
+			value = ccb.getValue();
 		}
 		setModelPropertyValue(model, propName, value);
 	}
@@ -106,7 +118,12 @@ public final class Utils {
 				.map(m -> m.getWriteMethod())
 				.ifPresent(m -> {
 					try {
-						m.invoke(model, value);
+						if(m.getParameters()[0].getType() == int.class) {
+							m.invoke(model, Integer.parseInt((String)value));
+						}
+						else {
+							m.invoke(model, value);
+						}
 					} catch (Exception e) {
 						throw new RuntimeException(e);
 					}

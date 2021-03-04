@@ -48,6 +48,7 @@ public abstract class AbstractCRUDListController<T extends Model> extends Abstra
 		bindColums();
 		refreshData();
 		bindEvents();
+		App.setUppAppSubTitle(getTitle());
 		init(location, resources);
 	}
 
@@ -97,8 +98,13 @@ public abstract class AbstractCRUDListController<T extends Model> extends Abstra
 	
 	public void getModelDetails(Integer id) {
 		runTask(() -> {
-			T model = getRepositoryService().getById(id);
-			fillDetails(model);
+			if(id != null) {				
+				T model = getRepositoryService().getById(id);
+				fillDetails(model);
+			}
+			else {				
+				fillDetails(null);
+			}
 		});
 	}
 

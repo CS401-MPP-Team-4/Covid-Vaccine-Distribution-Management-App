@@ -19,13 +19,13 @@
 				<Menu mnemonicParsing="false" text="General">
 					<items>
 						<MenuItem mnemonicParsing="false" onAction="#jumptToVaccine" text="Vaccine" />
-						<MenuItem mnemonicParsing="false" text="Supplier" />
+						<MenuItem mnemonicParsing="false" text="Supplier" onAction="#jumptToSupplier" />
 						<MenuItem mnemonicParsing="false" onAction="#exitApp" text="Exit" />
 					</items>
 				</Menu>
 				<Menu mnemonicParsing="false" text="Stock">
 					<items>
-						<MenuItem mnemonicParsing="false" text="Vaccine Site" />
+						<MenuItem mnemonicParsing="false" text="Vaccination Site" onAction="#jumptToVaccinationSite" />
 					</items>
 				</Menu>
 				<Menu mnemonicParsing="false" text="Help">
@@ -36,7 +36,7 @@
 			</menus>
 		</MenuBar>
 		
-		<VBox fx:id="mainContainer" style="-fx-background-color: green;" VBox.vgrow="ALWAYS" />
+		<VBox fx:id="mainContainer" VBox.vgrow="ALWAYS" />
 
 		<HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
 			<children>

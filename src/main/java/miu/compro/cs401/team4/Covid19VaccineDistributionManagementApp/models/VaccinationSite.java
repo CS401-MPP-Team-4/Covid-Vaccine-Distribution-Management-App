@@ -35,7 +35,25 @@ public class VaccinationSite extends Model {
 	public String getZipCode() {
 		return zipCode;
 	}
+	
+	
 	// END Getters
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public void setZipCode(String zipCode) {
+		this.zipCode = zipCode;
+	}
 
 	@Override
 	public String toString() {

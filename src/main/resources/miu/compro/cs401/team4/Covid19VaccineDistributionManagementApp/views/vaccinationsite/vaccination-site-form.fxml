@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.controllers.vaccine.VaccineFormController">
+<VBox xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.controllers.vaccinationsite.VaccinationSiteFormController">
    <children>
       <GridPane hgap="10.0" vgap="10.0">
          <columnConstraints>
@@ -34,28 +34,29 @@
                   <Insets top="5.0" />
                </padding>
             </VBox>
-            <VBox GridPane.rowIndex="1">
+           <VBox GridPane.rowIndex="1">
                <children>
-                  <Label id="lblSupplier" text="Supplier" />
-                  <ChoiceBox id="ccbSupplier" fx:id="ccbSupplier" prefHeight="27.0" prefWidth="184.0" />
+                  <Label id="lblCity" text="City" />
+                  <TextField id="txtCity" fx:id="txtCity" promptText="Enter City ..." />
                </children>
                <padding>
                   <Insets top="5.0" />
                </padding>
             </VBox>
-            <VBox GridPane.rowIndex="2">
+             <VBox GridPane.rowIndex="2">
                <children>
-                  <Label id="lblQuantity" text="Quantity" />
-                  <TextField id="txtAmount" fx:id="txtAmount" promptText="Enter Quantity" />
+                  <Label id="lblState" text="State" />
+                  <TextField id="txtState" fx:id="txtState" promptText="Enter State ..." />
                </children>
                <padding>
                   <Insets top="5.0" />
                </padding>
             </VBox>
-            <VBox GridPane.rowIndex="3">
+            
+             <VBox GridPane.rowIndex="3">
                <children>
-                  <Label id="lblInstruction" text="Instruction" />
-                  <TextArea id="txtInstruction" fx:id="txtInstruction" prefHeight="126.0" prefWidth="445.0" promptText="Enter Instruction..." />
+                  <Label id="lblZipCode" text="Zip Code" />
+                  <TextField id="txtZipCode" fx:id="txtZipCode" promptText="Enter Zip Code..." />
                </children>
                <padding>
                   <Insets top="5.0" />
@@ -68,7 +69,7 @@
       </GridPane>
       <HBox alignment="CENTER_RIGHT" spacing="10.0" VBox.vgrow="NEVER">
          <children>
-           <Button id="btnCreate" mnemonicParsing="false" prefHeight="27.0" prefWidth="113.0" onAction="#create" text="Create New..." />
+         	<Button id="btnCreate" mnemonicParsing="false" prefHeight="27.0" prefWidth="113.0" onAction="#create" text="Create New..." />
             <Button id="btnSave" mnemonicParsing="false" prefHeight="27.0" prefWidth="113.0" onAction="#save" text="Save" />
             <Button id="btnCancel" mnemonicParsing="false" prefHeight="27.0" prefWidth="113.0" onAction="#cancel" text="Cancel" />
          </children>

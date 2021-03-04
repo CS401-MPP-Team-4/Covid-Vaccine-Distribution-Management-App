@@ -31,9 +31,23 @@ public class SiteStock extends Model {
 		return stockAmount;
 	}
 	// END Getters
+	
+	public void setSite(VaccinationSite site) {
+		this.site = site;
+	}
+
+	public void setVaccine(Vaccine vaccine) {
+		this.vaccine = vaccine;
+	}
+
+	public void setStockAmount(Integer stockAmount) {
+		this.stockAmount = stockAmount;
+	}
 
 	@Override
 	public String toString() {
 		return String.format("Vaccination Site\n%s\nVaccine\n%s\nStock amount: %d", site, vaccine, stockAmount);
 	}
+
+	
 }

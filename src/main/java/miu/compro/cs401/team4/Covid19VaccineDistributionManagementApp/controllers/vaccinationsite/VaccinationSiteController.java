@@ -1,4 +1,4 @@
-package miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.controllers.supplier;
+package miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.controllers.vaccinationsite;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -9,40 +9,48 @@ import javafx.scene.control.TableColumn;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.Navigations;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.DataAccess.RepositoryService;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.DataAccess.SupplierService;
+import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.DataAccess.VaccinationSiteService;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.crudhelper.AbstractCRUDListController;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models.Supplier;
+import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models.VaccinationSite;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.utils.Bind;
 
 
-public class SupplierController extends AbstractCRUDListController<Supplier> {
+public class VaccinationSiteController extends AbstractCRUDListController<VaccinationSite> {
 
-	static final RepositoryService<Supplier> repositoryService = new SupplierService();
+	static final RepositoryService<VaccinationSite> repositoryService = new VaccinationSiteService();
 	
 	@FXML
 	@Bind("name")
 	TableColumn<Supplier, String> tcName;
 
 	@FXML
-	@Bind("address")
-	TableColumn<Supplier, String> tcAddress;
+	@Bind("city")
+	TableColumn<Supplier, String> tcCity;
+	
+	@FXML
+	@Bind("state")
+	TableColumn<Supplier, String> tcState;
 
 	@FXML
-	@Bind("phoneNumber")
-	TableColumn<Supplier, Integer> tcPhoneNumber;
+	@Bind("zipCode")
+	TableColumn<Supplier, Integer> tcZipCode;
 
 	@FXML
 	@Bind("name")
 	Label lblName;
 
 	@FXML
-	@Bind("address")
-	Label lblAddress;
-
-	@FXML
-	@Bind("phoneNumber")
-	Label lblPhoneNumber;
-
+	@Bind("city")
+	Label lblCity;
 	
+	@FXML
+	@Bind("state")
+	Label lblState;
+	
+	@FXML
+	@Bind("zipCode")
+	Label lblZipCode;
 	
 	@Override
 	public void init(URL location, ResourceBundle resources) {
@@ -51,26 +59,17 @@ public class SupplierController extends AbstractCRUDListController<Supplier> {
 	
 	@Override
 	public String getTitle() {
-		return "Supplier";
+		return "Vaccination Site";
 	}
 	
 	@Override
-	public RepositoryService<Supplier> getRepositoryService() {
+	public RepositoryService<VaccinationSite> getRepositoryService() {
 		return repositoryService;
 	}
 
 	@Override
 	public String getFormUrl() {
-		return Navigations.SUPPLIER_FORM.getValue();
+		return Navigations.VACCINATION_SITE_FORM.getValue();
 	}
-
-//	@Override
-//	public List<Supplier> fetchData() {
-//		return Arrays.asList(new Supplier(1, "Moderna", "Fair Field, Iowa", "261-458-5231"),
-//				new Supplier(1, "Pfizer", "Fair Field, Iowa", "261-123-4567"));
-//	}
-
-	
-
 	
 }
