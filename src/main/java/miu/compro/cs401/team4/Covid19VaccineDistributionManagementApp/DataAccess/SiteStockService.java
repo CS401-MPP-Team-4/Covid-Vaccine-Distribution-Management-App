@@ -181,8 +181,8 @@ public class SiteStockService extends RepositoryService<SiteStock> {
             VaccineService vaccineService = new VaccineService();
 
             while (resultSet.next()) {
-                Vaccine vaccine = vaccineService.getById(resultSet.getInt(2));
-                VaccinationSite vaccinationSite = vaccinationSiteService.getById(resultSet.getInt(3));
+                Vaccine vaccine = vaccineService.getById(resultSet.getInt(3));
+                VaccinationSite vaccinationSite = vaccinationSiteService.getById(resultSet.getInt(2));
                 SiteStock SiteStock = new SiteStock(
                         resultSet.getInt(1),
                        vaccinationSite,
