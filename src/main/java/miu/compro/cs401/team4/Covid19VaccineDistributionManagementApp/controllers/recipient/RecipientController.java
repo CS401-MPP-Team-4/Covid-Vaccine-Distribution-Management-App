@@ -36,11 +36,10 @@ public class RecipientController extends AbstractCRUDListController<Candidate> {
     TableColumn<Candidate, Integer> cAge;
 
 
-//    @FXML
-//    @Bind("status")
-//    TableColumn<Candidate, Integer> status;
-    public void initialize(){
-        TableColumn<Candidate, Void> colBtn = new TableColumn("Action");
+    @Override
+    public void init(URL location, ResourceBundle resources) {
+
+    	TableColumn<Candidate, Void> colBtn = new TableColumn("Action");
 
         Callback<TableColumn<Candidate, Void>, TableCell<Candidate, Void>> cellCallback = new Callback<TableColumn<Candidate, Void>, TableCell<Candidate, Void>>() {
             @Override
@@ -63,9 +62,7 @@ public class RecipientController extends AbstractCRUDListController<Candidate> {
         };
         colBtn.setCellFactory(cellCallback);
         getCrudTable().getColumns().add(colBtn);
-
     }
-
 
 
     @Override
@@ -78,11 +75,7 @@ public class RecipientController extends AbstractCRUDListController<Candidate> {
         return "Recipient";
     }
 
-    @Override
-    public void init(URL location, ResourceBundle resources) {
-
-
-    }
+   
 
     @Override
     public String getFormUrl() {
