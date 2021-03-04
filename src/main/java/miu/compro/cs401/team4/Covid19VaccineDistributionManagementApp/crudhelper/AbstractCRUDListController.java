@@ -48,6 +48,7 @@ public abstract class AbstractCRUDListController<T extends Model> extends Abstra
 		bindColums();
 		refreshData();
 		bindEvents();
+		App.setUppAppSubTitle(getTitle());
 		init(location, resources);
 	}
 

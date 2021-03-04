@@ -19,15 +19,16 @@ public class App extends Application {
 
 	private static Scene scene;
 	public static Stage primaryStage;
+	static final String APP_TITLE = "CVDMS";
 
 	@Override
 	public void start(Stage stage) throws IOException {
+		primaryStage = stage;
 		scene = new Scene(loadFXML(Navigations.MASTER.getValue()), (stage.getX() + stage.getWidth()), stage.getY());
 		scene.getStylesheets().addAll(this.getClass().getResource("css/style.css").toExternalForm());
-		stage.setTitle("CVDMS");
+		stage.setTitle(APP_TITLE);
 		stage.setScene(scene);
 		stage.show();
-		primaryStage = stage;
 	}
 
 	public static void setRoot(String fxml) throws IOException {
@@ -44,15 +45,19 @@ public class App extends Application {
 		return fxmlLoader.load();
 	}
 
+	public static void setUppAppSubTitle(String subTitle) {
+		primaryStage.setTitle(APP_TITLE + " - " + subTitle);
+	}
+	
 	public static void showError(String message) {
 		Alert alert = new Alert(AlertType.ERROR, message);
-		alert.setTitle("CVDMS");
+		alert.setTitle(APP_TITLE);
 		alert.showAndWait();
 	}
 
 	public static void showSuccess(String message) {
 		Alert alert = new Alert(AlertType.INFORMATION, message);
-		alert.setTitle("CVDMS");
+		alert.setTitle(APP_TITLE);
 		alert.showAndWait();
 	}
 
