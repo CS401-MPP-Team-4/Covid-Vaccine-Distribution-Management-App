@@ -2,7 +2,7 @@ package miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.controlle
 
 import javafx.event.ActionEvent;
 
-public class RegisterCandidateController {
-    public void registerCandidate(ActionEvent event) {
+public class VaccinationSiteController {
+    public void registerVaccinationSite(ActionEvent event) {
     }
 }

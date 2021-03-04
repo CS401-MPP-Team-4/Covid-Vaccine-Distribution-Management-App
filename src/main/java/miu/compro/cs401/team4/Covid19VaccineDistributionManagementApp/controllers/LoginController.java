@@ -3,17 +3,22 @@ package miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.controlle
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.App;
+import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.DataAccess.LoginService;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.Navigations;
+import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.utils.ROLES;
 
 import java.io.IOException;
 
 public class LoginController {
+
+
     @FXML
     private void goToHome() throws IOException {
         App.setRoot(Navigations.MASTER.getValue());
@@ -31,27 +36,46 @@ public class LoginController {
     @FXML
     public ChoiceBox roleChoiceBox;
 
-    String[] roles = {"Admin", "Staff", "Recipient"};
 
+    public void initialize() {
+        ObservableList<ROLES> choices = FXCollections.observableArrayList();
+        choices.add(ROLES.ADMIN);
+        choices.add(ROLES.STAFF);
+        choices.add(ROLES.CANDIDATE);
 
-    public void login(ActionEvent event) throws IOException {
-        authorize();
-    }
+        roleChoiceBox.setItems(choices);
 
-
-    private void authorize() {
-        roleChoiceBox.getSelectionModel().selectedIndexProperty().addListener((observableValue, number, t1) -> {
-
-            if (observableValue.getValue().equals("Admin")) {
-                //TODO change scene
-            } else if (observableValue.getValue().equals("Staff")) {
-
-            } else if (observableValue.getValue().equals("Candidate")) {
-
+        roleChoiceBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observableValue, Object o, Object t1) {
+                if (observableValue.getValue().equals(ROLES.CANDIDATE)) {
+                    try {
+                        App.setRoot(Navigations.CANDIDATE.getValue());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
-
         });
 
 
     }
+
+
+    public void login(ActionEvent event) throws IOException {
+        if (LoginService.login(username.getText(), password.getText(), ROLES.ADMIN.getVal())) {
+            if (roleChoiceBox.getValue().equals(ROLES.ADMIN)) {
+                App.setRoot(Navigations.MASTER.getValue());
+            } else if (roleChoiceBox.getValue().equals(ROLES.STAFF)) {
+                App.setRoot(Navigations.MASTER.getValue());
+            }
+        } else {
+            App.showError("Incorrect username or password!");
+
+        }
+        username.setText("");
+        password.setText("");
+    }
+
+
 }

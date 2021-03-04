@@ -5,6 +5,7 @@ import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models.Can
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models.VaccinationSite;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,9 +53,9 @@ public class CandidateService extends RepositoryService<Candidate> {
             PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
-
-            SupplierService supplierService = new SupplierService();
-            Supplier supplier = supplierService.getById(resultSet.getInt(resultSet.getString(3)));
+//public Candidate(Integer id, String firstName, String lastName, Byte age, String ssn, String status, LocalDate dateOfApplication, VaccinationSite vaccinationSite) {
+            VaccinationSiteService vaccinationSiteService = new VaccinationSiteService();
+            VaccinationSite vaccinationSite = vaccinationSiteService.getById(resultSet.getInt(8));
 
             candidate = new Candidate(
                     resultSet.getInt(1),
@@ -64,7 +65,7 @@ public class CandidateService extends RepositoryService<Candidate> {
                     resultSet.getString(5),
                     resultSet.getString(6),
                     resultSet.getDate(7).toLocalDate(),
-                    new VaccinationSite(1,null,null, null,null));
+                    vaccinationSite);
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();

@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #052A3C;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.controllers.RegisterCandidateController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #052A3C;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.controllers.candidate.RegisterCandidateController">
     <left>
         <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
@@ -19,6 +17,7 @@
                         <Image url="@../../images/sample.PNG" />
                     </image>
                 </ImageView>
+                <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" style="-fx-background-color: #8acbdf;" text="Back" textFill="WHITE" />
             </children></AnchorPane>
     </left>
     <center>
@@ -44,37 +43,24 @@
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </Label>
-                <Label layoutX="45.0" layoutY="257.0" prefHeight="20.0" prefWidth="89.0" text="Status" textFill="WHITE">
+                <Label layoutX="43.0" layoutY="221.0" prefHeight="20.0" prefWidth="98.0" text="Social Security" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </Label>
-                <Label layoutX="45.0" layoutY="220.0" prefHeight="20.0" prefWidth="89.0" text="Social Security" textFill="WHITE">
+                <Label layoutX="43.0" layoutY="184.0" prefHeight="20.0" prefWidth="89.0" text="Age" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </Label>
-                <Label layoutX="46.0" layoutY="183.0" prefHeight="20.0" prefWidth="89.0" text="Age" textFill="WHITE">
-                    <font>
-                        <Font name="System Bold" size="14.0" />
-                    </font>
-                </Label>
-                <TextField fx:id="firstName" layoutX="170.0" layoutY="105.0" promptText="firstname" />
-                <TextField fx:id="lastName" layoutX="170.0" layoutY="141.0" promptText="lastname" />
-                <TextField fx:id="age" layoutX="170.0" layoutY="180.0" promptText="age" />
-                <TextField fx:id="ssn" layoutX="170.0" layoutY="217.0" promptText="ssn" />
-                <TextField fx:id="password" layoutX="170.0" layoutY="254.0" promptText="status" />
-                <Button fx:id="login" layoutX="242.0" layoutY="338.0" mnemonicParsing="false" onAction="#registerCandidate" prefHeight="26.0" prefWidth="76.0" style="-fx-background-color: #8acbdf;" text="Register" textFill="WHITE" />
-                <ChoiceBox fx:id="roleChoiceBox" layoutX="169.0" layoutY="290.0" prefWidth="150.0">
-                    <items>
-                        <FXCollections fx:factory="observableArrayList">
-                            <String fx:value="Admin" />
-                            <String fx:value="Staff" />
-                            <String fx:value="Candidate" />
-                        </FXCollections>
-                    </items>
+                <TextField fx:id="firstName" layoutX="170.0" layoutY="105.0" prefHeight="26.0" prefWidth="155.0" promptText="firstname" />
+                <TextField fx:id="lastName" layoutX="170.0" layoutY="141.0" prefHeight="26.0" prefWidth="155.0" promptText="lastname" />
+                <TextField fx:id="age" layoutX="170.0" layoutY="180.0" prefHeight="26.0" prefWidth="155.0" promptText="age" />
+                <TextField fx:id="ssn" layoutX="170.0" layoutY="218.0" prefHeight="26.0" prefWidth="156.0" promptText="ssn" />
+                <Button fx:id="registerCandidate" layoutX="250.0" layoutY="294.0" mnemonicParsing="false" onAction="#registerCandidate" prefHeight="26.0" prefWidth="76.0" style="-fx-background-color: #8acbdf;" text="Register" textFill="WHITE" />
+                <ChoiceBox fx:id="vaccinationSiteChoiceBox" layoutX="171.0" layoutY="256.0" prefHeight="27.0" prefWidth="153.0">
                 </ChoiceBox>
-                <Label layoutX="46.0" layoutY="293.0" text="Vaccination Site" textFill="WHITE">
+                <Label layoutX="43.0" layoutY="260.0" text="Vaccination Site" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
