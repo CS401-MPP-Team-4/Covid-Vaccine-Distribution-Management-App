@@ -63,14 +63,6 @@ public class SupplierController extends AbstractCRUDListController<Supplier> {
 	public String getFormUrl() {
 		return Navigations.SUPPLIER_FORM.getValue();
 	}
-
-//	@Override
-//	public List<Supplier> fetchData() {
-//		return Arrays.asList(new Supplier(1, "Moderna", "Fair Field, Iowa", "261-458-5231"),
-//				new Supplier(1, "Pfizer", "Fair Field, Iowa", "261-123-4567"));
-//	}
-
 	
-
 	
 }

@@ -57,6 +57,14 @@ public class App extends Application {
 
 	public static void showSuccess(String message) {
 		Alert alert = new Alert(AlertType.INFORMATION, message);
+		alert.setHeaderText(message);
+		alert.setTitle(APP_TITLE);
+		alert.showAndWait();
+	}
+	
+	public static void showSuccess(String message, String headerText) {
+		Alert alert = new Alert(AlertType.INFORMATION, message);
+		alert.setHeaderText(headerText);
 		alert.setTitle(APP_TITLE);
 		alert.showAndWait();
 	}

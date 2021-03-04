@@ -165,4 +165,36 @@ public class SiteStockService extends RepositoryService<SiteStock> {
         }
         return siteStock;
     }
+    
+    public List<SiteStock> getBySiteId(Integer siteId) {
+    	List<SiteStock> siteStockList = new ArrayList<>();
+
+        try {
+            System.out.println("site stock: query preparing");
+            String query = "select id, vaccinationSite, vaccine, stockAmount from SiteStock where vaccinationSite = ?";
+            PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
+            preparedStatement.setInt(1, siteId);
+            
+            ResultSet resultSet = preparedStatement.executeQuery();
+            
+            VaccinationSiteService vaccinationSiteService = new VaccinationSiteService();
+            VaccineService vaccineService = new VaccineService();
+
+            while (resultSet.next()) {
+                Vaccine vaccine = vaccineService.getById(resultSet.getInt(3));
+                VaccinationSite vaccinationSite = vaccinationSiteService.getById(resultSet.getInt(2));
+                SiteStock SiteStock = new SiteStock(
+                        resultSet.getInt(1),
+                       vaccinationSite,
+                        vaccine,
+                        resultSet.getInt(4));
+
+                siteStockList.add(SiteStock);
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return siteStockList;
+    }
 }

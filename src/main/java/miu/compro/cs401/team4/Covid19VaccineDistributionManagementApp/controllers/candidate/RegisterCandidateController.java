@@ -44,8 +44,15 @@ public class RegisterCandidateController {
         CandidateService candidateService = new CandidateService();
         VaccinationSite vacSite = vaccinationSiteChoiceBox.getSelectionModel().getSelectedItem();
         candidateService.add(new Candidate(0, firstName.getText(), lastName.getText(), Byte.parseByte(age.getText()),  ssn.getText(),"NOT VACCINATED", LocalDate.now(), vacSite));
+        
+        Integer lastId = candidateService.getAll()
+        	.stream()
+        	.mapToInt(Candidate::getId)
+        	.max()
+        	.orElse(0);
+        
         clearFields();
-        App.showSuccess("Registered Successfully!");
+        App.showSuccess("Registered Successfully!",  "Your ID is: " + lastId);
     }
 
     public void back() throws IOException {
