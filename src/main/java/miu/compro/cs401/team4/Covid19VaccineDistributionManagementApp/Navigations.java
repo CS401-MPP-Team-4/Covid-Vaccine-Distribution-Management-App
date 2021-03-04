@@ -7,7 +7,10 @@ public enum Navigations {
 	VACCINE_FORM("views/vaccine/vaccine-form"),
 	SUPPLIER("views/supplier/supplier"),
 	SUPPLIER_FORM("views/supplier/supplier-form"),
-	RECIPIENT("views/recipient");
+	RECIPIENT("views/recipient"),
+	CANDIDATE("views/candidate/candidate"),
+	REGISTER_CANDIDATE("views/candidate/register-candidate"),
+	CHECK_CANDIDATE_STATUS("views/candidate/check-candidate-status");
 
 	private String value;
 
