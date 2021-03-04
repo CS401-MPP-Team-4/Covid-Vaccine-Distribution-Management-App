@@ -39,6 +39,28 @@ public class Recipient extends Model {
 	}
 	// END Getters
 
+
+	@Override
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public void setDateOfShot(LocalDate dateOfShot) {
+		this.dateOfShot = dateOfShot;
+	}
+
+	public void setTakenBy(Candidate takenBy) {
+		this.takenBy = takenBy;
+	}
+
+	public void setVaccine(Vaccine vaccine) {
+		this.vaccine = vaccine;
+	}
+
+	public void setAdministeredBy(Staff administeredBy) {
+		this.administeredBy = administeredBy;
+	}
+
 	@Override
 	public String toString() {
 		return String.format("Candidate\n%s\nAdministered by %s. Date of Shot: %s.", takenBy, dateOfShot, administeredBy.getUserName());

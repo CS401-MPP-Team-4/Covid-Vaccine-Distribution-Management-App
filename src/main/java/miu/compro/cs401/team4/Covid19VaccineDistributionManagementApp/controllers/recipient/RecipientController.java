@@ -2,10 +2,7 @@ package miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.controlle
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
+import javafx.scene.control.*;
 import javafx.util.Callback;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.DataAccess.CandidateService;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.DataAccess.RecipientService;
@@ -13,10 +10,13 @@ import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.DataAccess
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.DataAccess.VaccineService;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.crudhelper.AbstractCRUDListController;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models.Candidate;
+import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models.Recipient;
+import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models.Staff;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models.Vaccine;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.utils.Bind;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class RecipientController extends AbstractCRUDListController<Candidate> {
@@ -36,9 +36,18 @@ public class RecipientController extends AbstractCRUDListController<Candidate> {
     @Bind("age")
     TableColumn<Candidate, Integer> cAge;
 
+    @FXML
+    @Bind("status")
+    TableColumn<Candidate, Integer> cStatus;
+
+    @FXML
+    TableView recipientTable;
+
 
     @Override
     public void init(URL location, ResourceBundle resources) {
+
+
         TableColumn<Candidate, String> colVaccine = new TableColumn("Vaccine Type");
 
         Callback<TableColumn<Candidate, String>, TableCell<Candidate, String>> cellFactory =
@@ -83,7 +92,20 @@ public class RecipientController extends AbstractCRUDListController<Candidate> {
                     {
                         btn.setOnAction((ActionEvent event) -> {
                             //TODO call service
-//                            getTableView().getItems().get(getIndex());
+                            Candidate candidate = candidateService.getById(getCrudTable().getItems().get(getIndex()).getId());
+                            candidate.setStatus("VACCINATED");
+                            candidateService.update(candidate);
+
+//                            ChoiceBox<Vaccine> choiceBox = getCrudTable().getItems().get(getIndex())
+
+
+
+                            Recipient recipient = new Recipient();
+                            recipient.setTakenBy(candidate);
+                            recipient.setDateOfShot(LocalDate.now());
+                            recipient.setAdministeredBy(new Staff(1));
+//                            recipient.setVaccine();
+
 
                         });
                     }

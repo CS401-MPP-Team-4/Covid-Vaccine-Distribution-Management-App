@@ -15,6 +15,10 @@ public class Staff extends Model {
 		this.password = password;
 		this.jobDescription = jobDescription;
 	}
+
+	public Staff(Integer id) {
+		this.id = id;
+	}
 	// END Constructors
 
 	// START Getters

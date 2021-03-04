@@ -16,6 +16,7 @@
                             <TableColumn fx:id="cFirstName" prefWidth="116.0" text="First Name"/>
                             <TableColumn fx:id="cLastName" prefWidth="116.0" text="Last Name"/>
                             <TableColumn fx:id="cAge" prefWidth="120.0" text="Age"/>
+                            <TableColumn fx:id="cStatus" prefWidth="120.0" text="Status"/>
 
 
                         </columns>

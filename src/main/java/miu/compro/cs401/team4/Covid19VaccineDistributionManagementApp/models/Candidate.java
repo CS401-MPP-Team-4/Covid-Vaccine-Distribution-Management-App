@@ -54,6 +54,40 @@ public class Candidate extends Model {
 	}
 	// END Getters
 
+
+	@Override
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public void setAge(Byte age) {
+		this.age = age;
+	}
+
+	public void setSsn(String ssn) {
+		this.ssn = ssn;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public void setDateOfApplication(LocalDate dateOfApplication) {
+		this.dateOfApplication = dateOfApplication;
+	}
+
+	public void setVaccinationSite(VaccinationSite vaccinationSite) {
+		this.vaccinationSite = vaccinationSite;
+	}
+
 	@Override
 	public String toString() {
 		return String.format("Name: %s %s. %s years old. Applied on %s.", firstName, lastName, age, dateOfApplication);
