@@ -39,13 +39,45 @@ public class RecipientController extends AbstractCRUDListController<Candidate> {
 
     @Override
     public void init(URL location, ResourceBundle resources) {
+        TableColumn<Candidate, String> colVaccine = new TableColumn("Vaccine Type");
+
+        Callback<TableColumn<Candidate, String>, TableCell<Candidate, String>> cellFactory =
+                new Callback<>() {
+                    @Override
+                    public TableCell call(final TableColumn<Candidate, String> param) {
+                        final TableCell<Vaccine, String> cell = new TableCell<>() {
+
+                            @Override
+                            public void updateItem(String item, boolean empty) {
+                                super.updateItem(item, empty);
+                                if (empty) {
+                                    setGraphic(null);
+                                    setText(null);
+                                } else {
+                                    setGraphic(createBox());
+                                    setText(null);
+                                }
+                            }
+
+                            private ChoiceBox createBox() {
+                                ChoiceBox box = new ChoiceBox();
+                                box.getItems().addAll(vaccineService.getAll());
+                                return box;
+                            }
+                        };
+                        return cell;
+                    }
+                };
+
+        colVaccine.setCellFactory(cellFactory);
+        getCrudTable().getColumns().add(colVaccine);
 
         TableColumn<Candidate, Void> colBtn = new TableColumn("Action");
 
         Callback<TableColumn<Candidate, Void>, TableCell<Candidate, Void>> cellCallback = new Callback<TableColumn<Candidate, Void>, TableCell<Candidate, Void>>() {
             @Override
             public TableCell<Candidate, Void> call(TableColumn<Candidate, Void> candidateVoidTableColumn) {
-                final TableCell<Candidate, Void> cell = new TableCell<Candidate, Void>() {
+                final TableCell<Candidate, Void> cell = new TableCell<>() {
                     private final Button btn = new Button("Vaccinate");
 
                     {
@@ -72,37 +104,7 @@ public class RecipientController extends AbstractCRUDListController<Candidate> {
         colBtn.setCellFactory(cellCallback);
         getCrudTable().getColumns().add(colBtn);
 
-        TableColumn<Vaccine, String> colVaccine = new TableColumn("Vaccine Type");
 
-        Callback<TableColumn<Vaccine, String>, TableCell<Vaccine, String>> cellFactory =
-                new Callback<TableColumn<Vaccine, String>, TableCell<Vaccine, String>>() {
-                    @Override
-                    public TableCell call(final TableColumn<Vaccine, String> param) {
-                        final TableCell<Vaccine, String> cell = new TableCell<Vaccine, String>() {
-
-                            @Override
-                            public void updateItem(String item, boolean empty) {
-                                super.updateItem(item, empty);
-                                if (empty) {
-                                    setGraphic(null);
-                                    setText(null);
-                                } else {
-                                    setGraphic(createBox());
-                                    setText(null);
-                                }
-                            }
-
-                            private ChoiceBox createBox() {
-                                    ChoiceBox box = new ChoiceBox();
-                                    box.getItems().addAll(vaccineService.getAll());
-                                    return box;
-                            }
-                        };
-                        return cell;
-                    }
-                };
-
-        colVaccine.setCellFactory(cellFactory);
     }
 
 
