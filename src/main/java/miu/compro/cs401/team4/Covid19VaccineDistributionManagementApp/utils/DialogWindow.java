@@ -8,11 +8,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.App;
 
-public class DialogWindow {
+public class DialogWindow<T> {
 	Stage dialogStage;
-	Object controller;
+	T controller;
 
-	private DialogWindow(Stage dialogStage, Object controller) {
+	private DialogWindow(Stage dialogStage, T controller) {
 		this.dialogStage = dialogStage;
 		this.controller = controller;
 	}
@@ -20,16 +20,20 @@ public class DialogWindow {
 	public void showDialog() {
 		dialogStage.showAndWait();
 	}
+	
+	public void closeDialog() {
+		dialogStage.close();
+	}
 
 	public Stage getDialogStage() {
 		return dialogStage;
 	}
 
-	public Object getController() {
+	public T getController() {
 		return controller;
 	}
 
-	static public DialogWindow createDialog(String url, Stage parentState) {
+	static public <T> DialogWindow<T> createDialog(String url, Stage parentState) {
 		try {
 
 			var loader = App.createFXMLLoader(url);
@@ -43,9 +47,9 @@ public class DialogWindow {
 			Scene scene = new Scene(page);
 			dialogStage.setScene(scene);
 
-			Object controller = loader.getController();
+			T controller = loader.getController();
 
-			return new DialogWindow(dialogStage, controller);
+			return new DialogWindow<T>(dialogStage, controller);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

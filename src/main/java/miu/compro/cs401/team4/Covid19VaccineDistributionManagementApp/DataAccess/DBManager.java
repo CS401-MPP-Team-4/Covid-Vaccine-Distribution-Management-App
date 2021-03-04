@@ -30,18 +30,27 @@ public class DBManager {
 
 	static public Optional<Integer> insert(String sql, Object... params) throws SQLException {
 		var ps = prepareStatement(sql, params);
-		ps.executeUpdate(sql);
-		ResultSet rs = ps.getGeneratedKeys();
-		if (rs.next()) {
-			return Optional.of(rs.getInt(0));
-		}
+		ps.execute();
+		
+//		ResultSet rs1 = ps.getGeneratedKeys();
+//		if(rows == 1) {
+			String autoKeySql = "select * from last_insert_rowid()";
+			ps = prepareStatement(autoKeySql);
+			ResultSet rs =  ps.executeQuery();
+			
+			if (rs.next()) {
+				return Optional.of(rs.getInt(0));
+			}
+//		}
+		
 		return Optional.empty();
 	}
 
 	static public <T> List<T> getAll(String sql, Result2ModelConverter<T> converter, Object... params)
 			throws SQLException {
 		var ps = prepareStatement(sql, params);
-		var rs = ps.getResultSet();
+		
+		var rs = ps.executeQuery();
 
 		List<T> list = new ArrayList<>();
 		while (rs.next()) {
@@ -54,7 +63,7 @@ public class DBManager {
 	static public <T> Optional<T> getById(String sql,  Result2ModelConverter<T> converter, Integer id)
 			throws SQLException {
 		var ps = prepareStatement(sql, id);
-		var rs = ps.getResultSet();
+		var rs = ps.executeQuery();
 		
 		T res = null;
 		if (rs.next()) {
@@ -77,7 +86,6 @@ public class DBManager {
 		var conn = getConnection();
 		PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 		setParameters(ps, params);
-		ps.execute();
 
 		return ps;
 	}
