@@ -1,6 +1,6 @@
 package miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models;
 
-public class SiteStock {
+public class SiteStock extends Model {
 	private Integer id;
 	private VaccinationSite site;
 	private Vaccine vaccine;
@@ -31,4 +31,9 @@ public class SiteStock {
 		return stockAmount;
 	}
 	// END Getters
+
+	@Override
+	public String toString() {
+		return String.format("Vaccination Site\n%s\nVaccine\n%s\nStock amount: %d", site, vaccine, stockAmount);
+	}
 }

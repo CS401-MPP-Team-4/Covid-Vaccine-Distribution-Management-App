@@ -1,6 +1,6 @@
 package miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models;
 
-public class VaccinationSite {
+public class VaccinationSite extends Model {
 	private Integer id;
 	private String name;
 	private String city;
@@ -36,4 +36,9 @@ public class VaccinationSite {
 		return zipCode;
 	}
 	// END Getters
+
+	@Override
+	public String toString() {
+		return String.format("Name: %s. Address: %s, %s %s.", name, city, state, zipCode);
+	}
 }

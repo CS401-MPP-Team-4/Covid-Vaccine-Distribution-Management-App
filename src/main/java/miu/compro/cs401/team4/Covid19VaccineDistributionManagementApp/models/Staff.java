@@ -1,6 +1,6 @@
 package miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models;
 
-public class Staff {
+public class Staff extends Model {
 	private Integer id;
 	private String userName;
 	private String password;
@@ -31,4 +31,9 @@ public class Staff {
 		return jobDescription;
 	}
 	// END Getters
+
+	@Override
+	public String toString() {
+		return String.format("Name: %s. Job Description: %s.", userName, jobDescription);
+	}
 }

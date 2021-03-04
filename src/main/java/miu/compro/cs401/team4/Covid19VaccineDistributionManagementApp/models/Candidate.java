@@ -2,7 +2,7 @@ package miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models;
 
 import java.time.LocalDate;
 
-public class Candidate {
+public class Candidate extends Model {
 	private Integer id;
 	private String firstName;
 	private String lastName;
@@ -53,4 +53,9 @@ public class Candidate {
 		return vaccinationSite;
 	}
 	// END Getters
+
+	@Override
+	public String toString() {
+		return String.format("Name: %s %s. %s years old. Applied on %s.", firstName, lastName, age, dateOfApplication);
+	}
 }
