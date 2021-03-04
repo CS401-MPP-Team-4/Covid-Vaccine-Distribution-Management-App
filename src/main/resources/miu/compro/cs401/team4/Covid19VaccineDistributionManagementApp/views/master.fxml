@@ -20,6 +20,7 @@
 					<items>
 						<MenuItem mnemonicParsing="false" onAction="#jumptToVaccine" text="Vaccine" />
 						<MenuItem mnemonicParsing="false" text="Supplier" onAction="#jumptToSupplier" />
+						<MenuItem mnemonicParsing="false" text="Logout" onAction="#logout" />
 						<MenuItem mnemonicParsing="false" onAction="#exitApp" text="Exit" />
 					</items>
 				</Menu>
