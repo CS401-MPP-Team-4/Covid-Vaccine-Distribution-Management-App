@@ -14,5 +14,6 @@ Final Course Project for CS-401 Modern Programming Practices
 
 **Project Information** 
  1. [Project Proposal](https://mum0-my.sharepoint.com/:w:/g/personal/cgebru_miu_edu/EbS-OSSfh1ZJhTZfeIPYfVgBZ4xS_AbA3exICboqVr9MBA?e=H3iZgy)
+ 2. [Project Presentation (includes Class Diagram etc.)](https://mum0-my.sharepoint.com/:p:/g/personal/cgebru_miu_edu/Efl2vmlP5lNIodww-Hp_s5wBrTgjQ52OMNG9J9RJoeqzXw?e=niAxf4)
 
 
