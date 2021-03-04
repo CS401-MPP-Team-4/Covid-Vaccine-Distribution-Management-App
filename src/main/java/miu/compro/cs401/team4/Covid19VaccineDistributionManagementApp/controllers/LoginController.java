@@ -9,13 +9,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.App;
+import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.Navigations;
 
 import java.io.IOException;
 
 public class LoginController {
     @FXML
-    public void goToHome() throws IOException {
-        App.setRoot("master");
+    private void goToHome() throws IOException {
+        App.setRoot(Navigations.MASTER.getValue());
     }
 
     @FXML

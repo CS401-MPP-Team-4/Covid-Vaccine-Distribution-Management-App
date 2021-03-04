@@ -14,7 +14,7 @@ public class CandidateService extends RepositoryService<Candidate> {
         List<Candidate> CandidateList = new ArrayList<>();
 
         try {
-            Statement statement = DBManager.getInstance().getConnection().createStatement();
+            Statement statement = DBManager.getConnection().createStatement();
             System.out.println("query preparing");
             String query = "select id, firstname, lastname, age, ssn, status, dateofapplication, vaccinationsite from Candidate";
 
@@ -49,7 +49,7 @@ public class CandidateService extends RepositoryService<Candidate> {
         try {
             System.out.println("query preparing");
             String query = "select id, firstname, lastname, age, ssn, status, dateofapplication, vaccinationsite from Candidate where id=?";
-            PreparedStatement preparedStatement = DBManager.getInstance().getConnection().prepareStatement(query);
+            PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -79,7 +79,7 @@ public class CandidateService extends RepositoryService<Candidate> {
             System.out.println("query preparing");
             String query = "insert into Candidate(firstname, lastname, age, ssn, status, dateofapplication, vaccinationsite) values (?,?,?,?,?,?,?)";
 
-            PreparedStatement preparedStatement = DBManager.getInstance().getConnection().prepareStatement(query);
+            PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
             preparedStatement.setString(1, model.getFirstName());
             preparedStatement.setString(2, model.getLastName());
             preparedStatement.setInt(3, model.getAge());
@@ -103,7 +103,7 @@ public class CandidateService extends RepositoryService<Candidate> {
             System.out.println("query preparing");
             String query = "update Candidate set firstname = ?, lastname = ?, age= ?, ssn= ?, status= ?, dateofapplication = ?, vaccinationsite = ? where id = ?;";
 
-            PreparedStatement preparedStatement = DBManager.getInstance().getConnection().prepareStatement(query);
+            PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
             preparedStatement.setString(1, model.getFirstName());
             preparedStatement.setString(2, model.getLastName());
             preparedStatement.setInt(3, model.getAge());
@@ -128,7 +128,7 @@ public class CandidateService extends RepositoryService<Candidate> {
             System.out.println("query preparing");
             String query = "delete from Candidate where id = ?";
 
-            PreparedStatement preparedStatement = DBManager.getInstance().getConnection().prepareStatement(query);
+            PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
             preparedStatement.setInt(1, Id);
 
 

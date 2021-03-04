@@ -1,13 +1,13 @@
 package miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models;
 
-public class Vaccine {
-	private Integer id;
+public class Vaccine extends Model {
 	private String name;
 	private Supplier manufacturer;
 	private int amount;
 
 	// START Constructors
-	public Vaccine() { }
+	public Vaccine() {
+	}
 
 	public Vaccine(int id, String name, Supplier manufacturer, int amount) {
 		super();
@@ -19,29 +19,34 @@ public class Vaccine {
 	// END Constructors
 
 	// START Getters
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public Supplier getManufacturer() {
 		return manufacturer;
 	}
+
 	public void setManufacturer(Supplier manufacturer) {
 		this.manufacturer = manufacturer;
 	}
+
 	public int getAmount() {
 		return amount;
 	}
+
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
 	// END Getters
+
+	@Override
+	public String toString() {
+		return String.format("%s ", getName());
+	}
 }

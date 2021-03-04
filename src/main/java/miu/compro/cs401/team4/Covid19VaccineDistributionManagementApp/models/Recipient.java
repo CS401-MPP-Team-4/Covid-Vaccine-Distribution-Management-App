@@ -2,7 +2,7 @@ package miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models;
 
 import java.time.LocalDate;
 
-public class Recipient {
+public class Recipient extends Model {
 	private Integer id;
 	private LocalDate dateOfShot;
 	private Candidate takenBy;
@@ -38,4 +38,9 @@ public class Recipient {
 		return administeredBy;
 	}
 	// END Getters
+
+	@Override
+	public String toString() {
+		return String.format("Candidate\n%s\nAdministered by %s. Date of Shot: %s.", takenBy, dateOfShot, administeredBy.getUserName());
+	}
 }

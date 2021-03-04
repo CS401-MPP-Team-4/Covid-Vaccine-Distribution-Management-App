@@ -10,53 +10,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SupplierService extends RepositoryService<Supplier> {
+	
     @Override
-    public List<Supplier> getAll() {
-        List<Supplier> supplierList = new ArrayList<>();
+    public List<Supplier> getAll() throws SQLException {
+        List<Supplier> supplierList;
 
-        try {
-            Statement statement = DBManager.getInstance().getConnection().createStatement();
-            System.out.println("query preparing");
-            String query = "select id, name, address, phoneNumber from Supplier";
-
-            ResultSet resultSet = statement.executeQuery(query);
-
-            while (resultSet.next()) {
-                Supplier supplier = new Supplier(
+        String query = "select id, name, address, phoneNumber from Supplier";
+        supplierList = DBManager.getAll(query, resultSet -> new Supplier(
                         resultSet.getInt(1),
                         resultSet.getString(2),
                         resultSet.getString(3),
-                        resultSet.getString(4));
-
-                supplierList.add(supplier);
-            }
-//            DBManager.connection.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+                        resultSet.getString(4)));
+        
         return supplierList;
     }
 
     @Override
-    public Supplier getById(Integer id) {
+    public Supplier getById(Integer id) throws SQLException {
         Supplier supplier = null;
 
-        try {
-            System.out.println("query preparing");
-            String query = "select id, name, address, phoneNumber from Supplier where id=?";
-            PreparedStatement preparedStatement = DBManager.getInstance().getConnection().prepareStatement(query);
-            preparedStatement.setInt(1, id);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            supplier = new Supplier(
-                    resultSet.getInt(1),
-                    resultSet.getString(2),
-                    resultSet.getString(3),
-                    resultSet.getString(4));
-
-//            DBManager.connection.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+        String query = "select id, name, address, phoneNumber from Supplier where id=?";
+        supplier = DBManager.getById(query, resultSet-> new Supplier(
+                        resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getString(4)), id).orElse(null);
         return supplier;
     }
 
@@ -64,11 +42,11 @@ public class SupplierService extends RepositoryService<Supplier> {
     public boolean add(Supplier model) {
         int result = 0;
         try {
-            Statement statement = DBManager.getInstance().getConnection().createStatement();
+            Statement statement = DBManager.getConnection().createStatement();
             System.out.println("query preparing");
             String query = "insert into Supplier( name, address, phoneNumber) values (?,?,?)";
 
-            PreparedStatement preparedStatement = DBManager.getInstance().getConnection().prepareStatement(query);
+            PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
             preparedStatement.setString(1, model.getName());
             preparedStatement.setString(2, model.getAddress());
             preparedStatement.setString(3, model.getPhoneNumber());
@@ -81,16 +59,23 @@ public class SupplierService extends RepositoryService<Supplier> {
         }
         return result > 0;
     }
+    
+    @Override
+    public Integer addNew(Supplier model) throws SQLException {
+        String query = "insert into Supplier( name, address, phoneNumber) values (?,?,?)";
+        Integer newId = DBManager.insert(query,  model.getName(),  model.getAddress(), model.getPhoneNumber()).orElse(null);
+        return newId;
+    }
 
     @Override
     public boolean update(Supplier model) {
         int result = 0;
         try {
-            Statement statement = DBManager.getInstance().getConnection().createStatement();
+            Statement statement = DBManager.getConnection().createStatement();
             System.out.println("query preparing");
             String query = "update Supplier set name = ? , address = ?, phoneNumber =? where id = ?;";
 
-            PreparedStatement preparedStatement = DBManager.getInstance().getConnection().prepareStatement(query);
+            PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
             preparedStatement.setString(1, model.getName());
             preparedStatement.setString(2, model.getAddress());
             preparedStatement.setString(3, model.getPhoneNumber());
@@ -109,11 +94,11 @@ public class SupplierService extends RepositoryService<Supplier> {
     public boolean delete(Integer Id) {
         int result = 0;
         try {
-            Statement statement = DBManager.getInstance().getConnection().createStatement();
+            Statement statement = DBManager.getConnection().createStatement();
             System.out.println("query preparing");
             String query = "delete from Supplier where id = ?";
 
-            PreparedStatement preparedStatement = DBManager.getInstance().getConnection().prepareStatement(query);
+            PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
             preparedStatement.setInt(1, Id);
 
 
