@@ -44,7 +44,7 @@ public class RegisterCandidateController {
     public void registerCandidate(ActionEvent event) {
         CandidateService candidateService = new CandidateService();
         VaccinationSite vacSite = (VaccinationSite) vaccinationSiteChoiceBox.getSelectionModel().getSelectedItem();
-        candidateService.add(new Candidate(0, firstName.getText(), lastName.getText(), Byte.parseByte(age.getText()), "NOT VACCINATED", ssn.getText(), LocalDate.now(), vacSite));
+        candidateService.add(new Candidate(0, firstName.getText(), lastName.getText(), Byte.parseByte(age.getText()),  ssn.getText(),"NOT VACCINATED", LocalDate.now(), vacSite));
         clearFields();
         App.showSuccess("Registered Successfully!");
     }
