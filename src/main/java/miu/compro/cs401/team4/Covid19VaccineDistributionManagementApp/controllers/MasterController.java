@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
@@ -50,5 +51,8 @@ public class MasterController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	
+
+    public void jumptToStaff() throws IOException {
+		loadChildView(Navigations.STAFF);
+    }
 }
