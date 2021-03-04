@@ -9,6 +9,7 @@ public class Vaccine extends Model {
 	public Vaccine() {
 	}
 
+
 	public Vaccine(int id, String name, Supplier manufacturer, int amount) {
 		super();
 		this.id = id;
