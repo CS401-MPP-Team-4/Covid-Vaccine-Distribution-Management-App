@@ -14,7 +14,7 @@ public class LoginService {
         try {
             System.out.println("query preparing");
             String query = "select * from Staff where userName=? and password =?";
-            PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
+            PreparedStatement preparedStatement = DBManager.getInstance().getConnection().prepareStatement(query);
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
             ResultSet resultSet = preparedStatement.executeQuery();
