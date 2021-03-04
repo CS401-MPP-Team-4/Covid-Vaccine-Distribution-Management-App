@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #052A3C;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.controllers.CheckCandidateController">
+    <left>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+
+                </ImageView>
+                <ImageView fitHeight="400.0" fitWidth="202.0">
+                    <image>
+                        <Image url="@../../images/sample.PNG" />
+                    </image>
+                </ImageView>
+            </children></AnchorPane>
+    </left>
+    <center>
+        <AnchorPane prefHeight="400.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+             <children>
+                 <Button fx:id="checkStatus" layoutX="161.0" layoutY="268.0" mnemonicParsing="false" onAction="#checkCandidateStatus" prefHeight="26.0" prefWidth="76.0" style="-fx-background-color: #8acbdf;" text="Check" textFill="WHITE" />
+
+                 <Label layoutX="124.0" layoutY="173.0" text="Please insert your ID" textFill="#8acbdf">
+                    <font>
+                        <Font size="17.0" />
+                    </font>
+                </Label>
+                <Label layoutX="146.0" layoutY="92.0" textFill="#8acbdf" />
+            <TextField layoutX="97.0" layoutY="219.0" prefHeight="26.0" prefWidth="206.0" promptText="ID" />
+            </children></AnchorPane>
+    </center>
+</BorderPane>
