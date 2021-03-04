@@ -35,29 +35,11 @@ public class RecipientController extends AbstractCRUDListController<Candidate> {
     @Bind("age")
     TableColumn<Candidate, Integer> cAge;
 
+
 //    @FXML
 //    @Bind("status")
 //    TableColumn<Candidate, Integer> status;
-
-
-    private void initialize() {
-
-    }
-
-
-
-    @Override
-    public RepositoryService<Candidate> getRepositoryService() {
-        return candidateService;
-    }
-
-    @Override
-    public String getTitle() {
-        return "Recipient";
-    }
-
-    @Override
-    public void init(URL location, ResourceBundle resources) {
+    public void initialize(){
         TableColumn<Candidate, Void> colBtn = new TableColumn("Action");
 
         Callback<TableColumn<Candidate, Void>, TableCell<Candidate, Void>> cellCallback = new Callback<TableColumn<Candidate, Void>, TableCell<Candidate, Void>>() {
@@ -80,6 +62,24 @@ public class RecipientController extends AbstractCRUDListController<Candidate> {
             }
         };
         colBtn.setCellFactory(cellCallback);
+        getCrudTable().getColumns().add(colBtn);
+
+    }
+
+
+
+    @Override
+    public RepositoryService<Candidate> getRepositoryService() {
+        return candidateService;
+    }
+
+    @Override
+    public String getTitle() {
+        return "Recipient";
+    }
+
+    @Override
+    public void init(URL location, ResourceBundle resources) {
 
 
     }
