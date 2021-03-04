@@ -22,7 +22,7 @@ public class App extends Application {
 
 	@Override
 	public void start(Stage stage) throws IOException {
-		scene = new Scene(loadFXML(Navigations.LOGIN.getValue()), (stage.getX() + stage.getWidth()), stage.getY());
+		scene = new Scene(loadFXML(Navigations.MASTER.getValue()), (stage.getX() + stage.getWidth()), stage.getY());
 		scene.getStylesheets().addAll(this.getClass().getResource("css/style.css").toExternalForm());
 		stage.setTitle("CVDMS");
 		stage.setScene(scene);

@@ -1,23 +1,26 @@
 package miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.controllers.vaccine;
 
 import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
-
+import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.App;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.Navigations;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.DataAccess.RepositoryService;
+import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.DataAccess.VaccineService;
+import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.crudhelper.AbstractCRUDFormController;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.crudhelper.AbstractCRUDListController;
-import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models.Supplier;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models.Vaccine;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.utils.Bind;
+import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.utils.DialogWindow;
 
 
 public class VaccineController extends AbstractCRUDListController<Vaccine> {
+	
+	static final RepositoryService<Vaccine> repositoryService = new VaccineService();
+	
 	@FXML
 	@Bind(value = "name")
 	TableColumn<Vaccine, String> tcName;
@@ -49,17 +52,9 @@ public class VaccineController extends AbstractCRUDListController<Vaccine> {
 
 	@Override
 	public RepositoryService<Vaccine> getRepositoryService() {
-		// TODO Auto-generated method stub
-		return null;
+		return repositoryService;
 	}
 	
-	@Override
-	public List<Vaccine> fetchData() {
-		return Arrays.asList(
-				new Vaccine(1, "Moderna", new Supplier(1, "Moderna", "Fair Field, Iowa", "261-458-5231"), 200),
-				new Vaccine(2, "Pfizer", new Supplier(1, "Pfizer", "Fair Field, Iowa", "261-123-4567"), 100));
-	}
-
 	@Override
 	public String getTitle() {
 		return "Vaccine";
@@ -68,5 +63,16 @@ public class VaccineController extends AbstractCRUDListController<Vaccine> {
 	@Override
 	public String getFormUrl() {
 		return Navigations.VACCINE_FORM.getValue();
+	}
+	
+	@FXML
+	public void dispatch() {
+		System.out.println(this.getFormUrl());
+		DialogWindow<?> window = DialogWindow.createDialog("views/vaccine/vaccine-dispatch", App.primaryStage);
+		VaccineDispatchController form = (VaccineDispatchController)window.getController();
+		form.setVaccineId(currentId);
+		window.getDialogStage().setTitle("Dispatch");
+		window.showDialog();
+		refreshData();
 	}
 }

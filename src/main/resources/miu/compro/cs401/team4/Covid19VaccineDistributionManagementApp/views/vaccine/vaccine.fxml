@@ -33,10 +33,10 @@
                      <children>
                         <ToolBar prefHeight="40.0" prefWidth="200.0">
                           <items>
-                            <Button id="btnCreate" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#create" text="Create" />
-                              <Button id="btnEdit" alignment="CENTER_RIGHT" mnemonicParsing="false" text="Edit" />
-                              <Button id="btnDelete" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#delete" text="Delete" />
-                              <Button id="btnDispatch" alignment="CENTER_RIGHT" mnemonicParsing="false" text="Dispatch" />
+                           <Button fx:id="btnCreate" id="btnCreate" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#create" text="Create" />
+                              <Button fx:id="btnEdit" id="btnEdit" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#edit" text="Edit" />
+                              <Button fx:id="btnDelete" id="btnDelete" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#delete" text="Delete" />
+                              <Button id="btnDispatch" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#dispatch" text="Dispatch" />
                           </items>
                         </ToolBar>
                         <GridPane hgap="10.0" vgap="10.0">

@@ -22,6 +22,12 @@ public class MasterController implements Initializable {
 	}
 	
 	@FXML
+	private void jumptToSupplier() throws IOException {
+		loadChildView(Navigations.SUPPLIER);
+	}
+	
+
+	@FXML
 	private void jumptToVaccine() throws IOException {
 		loadChildView(Navigations.VACCINE);
 	}
@@ -34,7 +40,7 @@ public class MasterController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
-			loadChildView(Navigations.SUPPLIER);
+			loadChildView(Navigations.VACCINE);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -50,8 +50,9 @@ public class VaccineService extends RepositoryService<Vaccine> {
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
 
+//            resultSet.next();
             SupplierService supplierService = new SupplierService();
-            Supplier supplier = supplierService.getById(resultSet.getInt(resultSet.getString(3)));
+            Supplier supplier = supplierService.getById(resultSet.getInt(3));
 
             vaccine = new Vaccine(
                     resultSet.getInt(1),
@@ -125,4 +126,25 @@ public class VaccineService extends RepositoryService<Vaccine> {
         }
         return result > 0;
     }
+    
+    public boolean dispatch(Integer vaccineId, Integer siteId, Integer quantity) {
+//        int result = 0;
+//        try {
+////            System.out.println("query preparing");
+////            String query = "update SiteStock set name = ? , supplier = ?, amount =? where id = ?;";
+////
+////            PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
+////            preparedStatement.setInt(1, Id);
+////
+////
+////            result = preparedStatement.executeUpdate();
+//
+//        } catch (SQLException throwables) {
+//            throwables.printStackTrace();
+//        }
+//        return result > 0;
+    	return false;
+    }
+    
+    
 }
