@@ -57,4 +57,11 @@ public class MasterController implements Initializable {
 		}
 	}
 
+	public void logout() throws IOException {
+		App.setRoot(Navigations.LOGIN.getValue());
+	}
+
+    public void jumptToStaff() throws IOException {
+		loadChildView(Navigations.STAFF);
+    }
 }
