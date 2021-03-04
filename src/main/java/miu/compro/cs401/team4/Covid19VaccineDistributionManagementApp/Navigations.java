@@ -12,7 +12,10 @@ public enum Navigations {
 	RECIPIENT("views/recipient/recipient"),
 	CANDIDATE("views/candidate/candidate"),
 	REGISTER_CANDIDATE("views/candidate/register-candidate"),
-	CHECK_CANDIDATE_STATUS("views/candidate/check-candidate-status");
+	CHECK_CANDIDATE_STATUS("views/candidate/check-candidate-status"),
+
+	STAFF("views/staff/staff"),
+	STAFF_FORM("views/staff/staff-form");
 
 	private String value;
 
