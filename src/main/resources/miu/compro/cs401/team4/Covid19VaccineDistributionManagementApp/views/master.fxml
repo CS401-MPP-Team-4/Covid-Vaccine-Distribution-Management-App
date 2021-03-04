@@ -26,6 +26,7 @@
 				<Menu mnemonicParsing="false" text="Stock">
 					<items>
 						<MenuItem mnemonicParsing="false" text="Vaccination Site" onAction="#jumptToVaccinationSite" />
+						<MenuItem mnemonicParsing="false" text="Recipients" onAction="#jumptToRecipient" />
 					</items>
 				</Menu>
 				<Menu mnemonicParsing="false" text="Help">

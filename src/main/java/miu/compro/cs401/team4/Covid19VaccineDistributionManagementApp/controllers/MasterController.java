@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
@@ -36,6 +37,11 @@ public class MasterController implements Initializable {
 	private void jumptToVaccinationSite() throws IOException {
 		loadChildView(Navigations.VACCINATION_SITE);
 	}
+
+	@FXML
+	public void jumptToRecipient(ActionEvent event) throws IOException {
+		loadChildView(Navigations.RECIPIENT);
+	}
 	
 	@FXML
 	private void exitApp() throws IOException {
@@ -50,5 +56,5 @@ public class MasterController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	
+
 }
