@@ -34,7 +34,7 @@ public class MasterController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		try {
-			loadChildView(Navigations.VACCINE);
+			loadChildView(Navigations.SUPPLIER);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

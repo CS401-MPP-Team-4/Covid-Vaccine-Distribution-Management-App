@@ -10,6 +10,7 @@ module miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp {
     opens miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models to javafx.base;
     opens miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.controllers to javafx.fxml;
     opens miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.controllers.vaccine to javafx.fxml;
+    opens miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.controllers.supplier to javafx.fxml;
     
     exports miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp;
     exports miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.controllers;

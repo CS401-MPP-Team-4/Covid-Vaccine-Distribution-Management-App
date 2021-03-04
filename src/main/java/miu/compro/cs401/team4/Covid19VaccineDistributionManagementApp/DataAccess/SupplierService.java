@@ -10,53 +10,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SupplierService extends RepositoryService<Supplier> {
+	
     @Override
-    public List<Supplier> getAll() {
-        List<Supplier> supplierList = new ArrayList<>();
+    public List<Supplier> getAll() throws SQLException {
+        List<Supplier> supplierList;
 
-        try {
-            Statement statement = DBManager.getConnection().createStatement();
-            System.out.println("query preparing");
-            String query = "select id, name, address, phoneNumber from Supplier";
-
-            ResultSet resultSet = statement.executeQuery(query);
-
-            while (resultSet.next()) {
-                Supplier supplier = new Supplier(
+        String query = "select id, name, address, phoneNumber from Supplier";
+        supplierList = DBManager.getAll(query, resultSet -> new Supplier(
                         resultSet.getInt(1),
                         resultSet.getString(2),
                         resultSet.getString(3),
-                        resultSet.getString(4));
-
-                supplierList.add(supplier);
-            }
-//            DBManager.connection.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+                        resultSet.getString(4)));
+        
         return supplierList;
     }
 
     @Override
-    public Supplier getById(Integer id) {
+    public Supplier getById(Integer id) throws SQLException {
         Supplier supplier = null;
 
-        try {
-            System.out.println("query preparing");
-            String query = "select id, name, address, phoneNumber from Supplier where id=?";
-            PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
-            preparedStatement.setInt(1, id);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            supplier = new Supplier(
-                    resultSet.getInt(1),
-                    resultSet.getString(2),
-                    resultSet.getString(3),
-                    resultSet.getString(4));
+        String query = "select id, name, address, phoneNumber from Supplier where id=?";
+        supplier = DBManager.getById(query, resultSet-> new Supplier(
+											                resultSet.getInt(1),
+											                resultSet.getString(2),
+											                resultSet.getString(3),
+											                resultSet.getString(4)), id).orElse(null);
 
-//            DBManager.connection.close();
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
         return supplier;
     }
 
@@ -80,6 +59,13 @@ public class SupplierService extends RepositoryService<Supplier> {
             throwables.printStackTrace();
         }
         return result > 0;
+    }
+    
+    @Override
+    public Integer addNew(Supplier model) throws SQLException {
+        String query = "insert into Supplier( name, address, phoneNumber) values (?,?,?)";
+        Integer newId = DBManager.insert(query,  model.getName(),  model.getAddress(), model.getPhoneNumber()).orElse(null);
+        return newId;
     }
 
     @Override

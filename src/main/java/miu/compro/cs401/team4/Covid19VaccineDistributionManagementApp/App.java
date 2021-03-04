@@ -4,37 +4,70 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Optional;
 
 /**
  * JavaFX App
  */
 public class App extends Application {
 
-    private static Scene scene;
-    public static Stage primaryStage;
-    
-    @Override
-    public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML(Navigations.LOGIN.getValue()), (stage.getX() + stage.getWidth() ), stage.getY());
-        scene.getStylesheets().addAll(this.getClass().getResource("css/style.css").toExternalForm());
-        stage.setTitle("CVDMS");
-        stage.setScene(scene);
-        stage.show();
-        primaryStage = stage;
-    }
+	private static Scene scene;
+	public static Stage primaryStage;
 
-    public static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
+	@Override
+	public void start(Stage stage) throws IOException {
+		scene = new Scene(loadFXML(Navigations.LOGIN.getValue()), (stage.getX() + stage.getWidth()), stage.getY());
+		scene.getStylesheets().addAll(this.getClass().getResource("css/style.css").toExternalForm());
+		stage.setTitle("CVDMS");
+		stage.setScene(scene);
+		stage.show();
+		primaryStage = stage;
+	}
 
-    public static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
-    }
+	public static void setRoot(String fxml) throws IOException {
+		scene.setRoot(loadFXML(fxml));
+	}
 
-    public static void main(String[] args) {launch(args); }
+	public static FXMLLoader createFXMLLoader(String fxml) throws IOException {
+		FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+		return fxmlLoader;
+	}
+	
+	public static Parent loadFXML(String fxml) throws IOException {
+		FXMLLoader fxmlLoader = createFXMLLoader(fxml);
+		return fxmlLoader.load();
+	}
+
+	public static void showError(String message) {
+		Alert alert = new Alert(AlertType.ERROR, message);
+		alert.setTitle("CVDMS");
+		alert.showAndWait();
+	}
+
+	public static void showSuccess(String message) {
+		Alert alert = new Alert(AlertType.INFORMATION, message);
+		alert.setTitle("CVDMS");
+		alert.showAndWait();
+	}
+
+	public static void showSuccess() {
+		showSuccess("Successful!");
+	}
+
+	public static Optional<ButtonType> showConfirm(String message) {
+		Alert alert = new Alert(AlertType.CONFIRMATION, message);
+		alert.setTitle("CVDMS");
+		return alert.showAndWait();
+	}
+
+	public static void main(String[] args) {
+		launch(args);
+	}
 
 }

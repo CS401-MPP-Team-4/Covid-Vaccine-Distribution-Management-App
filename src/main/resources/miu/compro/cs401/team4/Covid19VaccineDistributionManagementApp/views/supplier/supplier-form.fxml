@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.controllers.supplier.SupplierFormController">
+   <children>
+      <GridPane hgap="10.0" vgap="10.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <VBox>
+               <children>
+                  <Label id="lblName" text="Name" />
+                  <TextField id="txtName" fx:id="txtName" promptText="Enter Name..." />
+               </children>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </VBox>
+           <VBox GridPane.rowIndex="1">
+               <children>
+                  <Label id="lblAddress" text="Name" />
+                  <TextField id="txtAddress" fx:id="txtAddress" promptText="City, State ..." />
+               </children>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </VBox>
+             <VBox GridPane.rowIndex="2">
+               <children>
+                  <Label id="lblPhoneNumber" text="Name" />
+                  <TextField id="txtPhoneNumber" fx:id="txtPhoneNumber" promptText="Enter Phone Number..." />
+               </children>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
+      </GridPane>
+      <HBox alignment="CENTER_RIGHT" spacing="10.0" VBox.vgrow="NEVER">
+         <children>
+         	<Button id="btnCreate" mnemonicParsing="false" prefHeight="27.0" prefWidth="113.0" text="Create New..." />
+            <Button id="btnSave" mnemonicParsing="false" prefHeight="27.0" prefWidth="113.0" text="Save" />
+            <Button id="btnCancel" mnemonicParsing="false" prefHeight="27.0" prefWidth="113.0" text="Cancel" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
+      </HBox>
+   </children>
+</VBox>

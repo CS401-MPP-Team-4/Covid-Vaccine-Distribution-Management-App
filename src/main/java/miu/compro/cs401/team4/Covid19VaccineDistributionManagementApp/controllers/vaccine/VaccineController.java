@@ -6,47 +6,40 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TextField;
 
-import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.App;
+import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.Navigations;
+import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.DataAccess.RepositoryService;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.crudhelper.AbstractCRUDListController;
-import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.crudhelper.Bind;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models.Supplier;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models.Vaccine;
+import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.utils.Bind;
 
-import java.io.IOException;
 
 public class VaccineController extends AbstractCRUDListController<Vaccine> {
 	@FXML
-	@Bind(field = "name")
+	@Bind(value = "name")
 	TableColumn<Vaccine, String> tcName;
 
 	@FXML
-	@Bind(field = "manufacturer")
+	@Bind(value = "manufacturer")
 	TableColumn<Vaccine, String> tcManufacturer;
 
 	@FXML
-	@Bind(field = "amount")
+	@Bind(value = "amount")
 	TableColumn<Vaccine, Integer> tcAmount;
 
 	@FXML
-	@Bind(field = "name")
+	@Bind(value = "name")
 	Label lblName;
 
 	@FXML
-	@Bind(field = "manufacturer")
+	@Bind(value = "manufacturer")
 	Label lblManufacturer;
 
 	@FXML
-	@Bind(field = "amount")
+	@Bind(value = "amount")
 	Label lblAmount;
 
 	@Override
@@ -55,49 +48,25 @@ public class VaccineController extends AbstractCRUDListController<Vaccine> {
 	}
 
 	@Override
+	public RepositoryService<Vaccine> getRepositoryService() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
 	public List<Vaccine> fetchData() {
 		return Arrays.asList(
 				new Vaccine(1, "Moderna", new Supplier(1, "Moderna", "Fair Field, Iowa", "261-458-5231"), 200),
 				new Vaccine(2, "Pfizer", new Supplier(1, "Pfizer", "Fair Field, Iowa", "261-123-4567"), 100));
 	}
 
-	@FXML
-	public void create() {
-		this.showEditDialog(null);
+	@Override
+	public String getTitle() {
+		return "Vaccine";
 	}
-
-	public void delete() {
-		Alert alert = new Alert(AlertType.CONFIRMATION, "Are you sure to delete?");
-		System.out.println(alert.showAndWait().get());
-
+	
+	@Override
+	public String getFormUrl() {
+		return Navigations.VACCINE_FORM.getValue();
 	}
-
-	@FXML
-	public void showEditDialog(Vaccine vaccine) {
-		try {
-			Parent page = App.loadFXML("views/vaccine/vaccine-form");
-
-			// Create the dialog Stage.
-			Stage dialogStage = new Stage();
-			dialogStage.setTitle("Edit Person");
-			dialogStage.initModality(Modality.WINDOW_MODAL);
-			dialogStage.initOwner(App.primaryStage);
-			Scene scene = new Scene(page);
-			dialogStage.setScene(scene);
-
-			// Set the person into the controller.
-//	        PersonEditDialogController controller = loader.getController();
-//	        controller.setDialogStage(dialogStage);
-//	        controller.setPerson(person);
-
-			// Show the dialog and wait until the user closes it
-			dialogStage.showAndWait();
-
-//	        return controller.isOkClicked();
-		} catch (IOException e) {
-			e.printStackTrace();
-//	        return false;
-		}
-	}
-
 }

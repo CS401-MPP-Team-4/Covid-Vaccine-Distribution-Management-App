@@ -4,6 +4,9 @@ public enum Navigations {
 	LOGIN("views/login/login"),
 	MASTER("views/master"),
 	VACCINE("views/vaccine/vaccine"),
+	VACCINE_FORM("views/vaccine/vaccine-form"),
+	SUPPLIER("views/supplier/supplier"),
+	SUPPLIER_FORM("views/supplier/supplier-form"),
 	RECIPIENT("views/recipient");
 
 	private String value;

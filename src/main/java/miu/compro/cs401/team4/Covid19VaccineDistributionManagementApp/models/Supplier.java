@@ -1,7 +1,6 @@
 package miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models;
 
-public class Supplier {
-	private Integer id;
+public class Supplier extends Model {
 	private String name;
 	private String address; /* address, State */
 	private String phoneNumber;
@@ -20,10 +19,6 @@ public class Supplier {
 	// END Constructors
 
 	// START Getters
-	public int getId() {
-		return id;
-	}
-
 	public String getName() {
 		return name;
 	}
