@@ -20,12 +20,18 @@
 					<items>
 						<MenuItem mnemonicParsing="false" onAction="#jumptToVaccine" text="Vaccine" />
 						<MenuItem mnemonicParsing="false" text="Supplier" onAction="#jumptToSupplier" />
+						<MenuItem mnemonicParsing="false" text="Logout" onAction="#logout" />
 						<MenuItem mnemonicParsing="false" onAction="#exitApp" text="Exit" />
 					</items>
 				</Menu>
 				<Menu mnemonicParsing="false" text="Stock">
 					<items>
 						<MenuItem mnemonicParsing="false" text="Vaccination Site" onAction="#jumptToVaccinationSite" />
+					</items>
+				</Menu>
+				<Menu mnemonicParsing="false" text="Staff">
+					<items>
+						<MenuItem mnemonicParsing="false" text="Staff" onAction="#jumptToStaff" />
 					</items>
 				</Menu>
 				<Menu mnemonicParsing="false" text="Help">
