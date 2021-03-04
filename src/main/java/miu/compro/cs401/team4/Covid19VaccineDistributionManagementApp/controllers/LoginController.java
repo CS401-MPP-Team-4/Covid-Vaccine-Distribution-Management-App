@@ -49,7 +49,11 @@ public class LoginController {
             @Override
             public void changed(ObservableValue observableValue, Object o, Object t1) {
                 if (observableValue.getValue().equals(ROLES.CANDIDATE)) {
-                    System.out.println("works");
+                    try {
+                        App.setRoot(Navigations.CANDIDATE.getValue());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         });
