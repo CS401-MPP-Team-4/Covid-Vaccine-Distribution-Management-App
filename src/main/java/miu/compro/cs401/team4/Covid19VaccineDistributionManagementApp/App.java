@@ -17,57 +17,57 @@ import java.util.Optional;
  */
 public class App extends Application {
 
-    private static Scene scene;
-    public static Stage primaryStage;
+	private static Scene scene;
+	public static Stage primaryStage;
 
-    @Override
-    public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML(Navigations.LOGIN.getValue()), (stage.getX() + stage.getWidth()), stage.getY());
-        scene.getStylesheets().addAll(this.getClass().getResource("css/style.css").toExternalForm());
-        stage.setTitle("CVDMS");
-        stage.setScene(scene);
-        stage.show();
-        primaryStage = stage;
-    }
+	@Override
+	public void start(Stage stage) throws IOException {
+		scene = new Scene(loadFXML(Navigations.LOGIN.getValue()), (stage.getX() + stage.getWidth()), stage.getY());
+		scene.getStylesheets().addAll(this.getClass().getResource("css/style.css").toExternalForm());
+		stage.setTitle("CVDMS");
+		stage.setScene(scene);
+		stage.show();
+		primaryStage = stage;
+	}
 
-    public static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
+	public static void setRoot(String fxml) throws IOException {
+		scene.setRoot(loadFXML(fxml));
+	}
 
-    public static FXMLLoader createFXMLLoader(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader;
-    }
+	public static FXMLLoader createFXMLLoader(String fxml) throws IOException {
+		FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+		return fxmlLoader;
+	}
+	
+	public static Parent loadFXML(String fxml) throws IOException {
+		FXMLLoader fxmlLoader = createFXMLLoader(fxml);
+		return fxmlLoader.load();
+	}
 
-    public static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = createFXMLLoader(fxml);
-        return fxmlLoader.load();
-    }
+	public static void showError(String message) {
+		Alert alert = new Alert(AlertType.ERROR, message);
+		alert.setTitle("CVDMS");
+		alert.showAndWait();
+	}
 
-    public static void showError(String message) {
-        Alert alert = new Alert(AlertType.ERROR, message);
-        alert.setTitle("CVDMS");
-        alert.showAndWait();
-    }
+	public static void showSuccess(String message) {
+		Alert alert = new Alert(AlertType.INFORMATION, message);
+		alert.setTitle("CVDMS");
+		alert.showAndWait();
+	}
 
-    public static void showSuccess(String message) {
-        Alert alert = new Alert(AlertType.INFORMATION, message);
-        alert.setTitle("CVDMS");
-        alert.showAndWait();
-    }
+	public static void showSuccess() {
+		showSuccess("Successful!");
+	}
 
-    public static void showSuccess() {
-        showSuccess("Successful!");
-    }
+	public static Optional<ButtonType> showConfirm(String message) {
+		Alert alert = new Alert(AlertType.CONFIRMATION, message);
+		alert.setTitle("CVDMS");
+		return alert.showAndWait();
+	}
 
-    public static Optional<ButtonType> showConfirm(String message) {
-        Alert alert = new Alert(AlertType.CONFIRMATION, message);
-        alert.setTitle("CVDMS");
-        return alert.showAndWait();
-    }
-
-    public static void main(String[] args) {
-        launch(args);
-    }
+	public static void main(String[] args) {
+		launch(args);
+	}
 
 }
