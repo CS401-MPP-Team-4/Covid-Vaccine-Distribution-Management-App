@@ -41,7 +41,7 @@ public abstract class AbstractCRUDListController<T extends Model> extends Abstra
 	@FXML
 	Button btnEdit;
 
-	protected T currentModel;
+	protected Integer currentId;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -64,9 +64,9 @@ public abstract class AbstractCRUDListController<T extends Model> extends Abstra
 			ObservableList<T> list = FXCollections.observableList(fetchData());
 			crudTable.setItems(list);
 			if (list.size() > 0) {
-				setCurrentModel(list.get(0));
+				setCurrentId(list.get(0).getId());
 			} else {
-				setCurrentModel(null);
+				setCurrentId(null);
 			}
 //			throw new Exception("Error Test");
 		});
@@ -94,39 +94,53 @@ public abstract class AbstractCRUDListController<T extends Model> extends Abstra
 			}
 		});
 	}
+	
+	public void getModelDetails(Integer id) {
+		runTask(() -> {
+			T model = getRepositoryService().getById(id);
+			fillDetails(model);
+		});
+	}
 
-	private void fillDetails(T model) {
+	protected void fillDetails(T model) {
 		Utils.setBoundedData(model, this, "...");
 	}
 
 	private void bindEvents() {
 		getCrudTable().getSelectionModel().selectedItemProperty()
-				.addListener((observable, oldValue, newValue) -> setCurrentModel(newValue));
+				.addListener((observable, oldValue, newValue) -> {
+					if(newValue != null)
+						setCurrentId(newValue.getId());	
+				});
 	}
 
-	public void onCurrentModelChanged(T newModel) {
-		fillDetails(newModel);
+	public void onCurrentIdChanged(Integer id) {
+		getModelDetails(id);
 		toggleButtons();
 	}
 
-	private void setCurrentModel(T model) {
-		currentModel = model;
-		onCurrentModelChanged(model);
+	private void setCurrentId(Integer id) {
+		currentId = id;
+		onCurrentIdChanged(id);
 	}
 
 	@FXML
 	public void create() {
 		System.out.println(this.getFormUrl());
-		DialogWindow window = DialogWindow.createDialog(this.getFormUrl(), App.primaryStage);
+		DialogWindow<AbstractCRUDFormController<T>> window = DialogWindow.createDialog(this.getFormUrl(), App.primaryStage);
+		AbstractCRUDFormController<T> form = window.getController();
+		form.setWindow(window);
+		form.setCurrentId(null);
 		window.showDialog();
 		refreshData();
 	}
 
 	@FXML
 	public void edit() {
-		DialogWindow window = DialogWindow.createDialog(this.getFormUrl(), App.primaryStage);
-		AbstractCRUDFormController<T> form = (AbstractCRUDFormController<T>) window.getController();
-		form.setCurrentModel(currentModel);
+		DialogWindow<AbstractCRUDFormController<T>> window = DialogWindow.createDialog(this.getFormUrl(), App.primaryStage);
+		AbstractCRUDFormController<T> form = window.getController();
+		form.setWindow(window);
+		form.setCurrentId(currentId);
 		window.showDialog();
 		refreshData();
 	}
@@ -135,7 +149,7 @@ public abstract class AbstractCRUDListController<T extends Model> extends Abstra
 	public void delete() {
 		if (App.showConfirm("Are you sure to delete?").get() == ButtonType.OK) {
 			runTask(() -> {
-				getRepositoryService().delete(currentModel.getId());
+				getRepositoryService().delete(currentId);
 			}, true);
 
 			refreshData();
@@ -143,7 +157,7 @@ public abstract class AbstractCRUDListController<T extends Model> extends Abstra
 	}
 
 	protected void toggleButtons() {
-		if (currentModel != null) {
+		if (currentId != null) {
 			if (btnEdit != null)
 				btnEdit.setDisable(false);
 			if (btnDelete != null)

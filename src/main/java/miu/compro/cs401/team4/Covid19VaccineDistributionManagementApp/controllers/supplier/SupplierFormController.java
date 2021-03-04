@@ -42,4 +42,9 @@ public class SupplierFormController extends AbstractCRUDFormController<Supplier>
 		return "Supplier";
 	}
 
+	@Override
+	public Supplier createModel() {
+		return new Supplier();
+	}
+
 }

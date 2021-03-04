@@ -21,6 +21,7 @@ public abstract class AbstractCRUDController<T extends Model> {
 				App.showSuccess();
 			}
 		} catch (Exception e) {
+			e.printStackTrace();
 			App.showError(e.getMessage());
 		}
 	}
