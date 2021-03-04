@@ -60,10 +60,9 @@ public class LoginController {
 
     public void login(ActionEvent event) throws IOException {
         if (LoginService.login(username.getText(), password.getText(), ROLES.ADMIN.getVal())) {
-            Object selectedItem = roleChoiceBox.getSelectionModel().getSelectedItem();
-            if (ROLES.STAFF.getVal().equals(selectedItem)) {
+            if (roleChoiceBox.getValue().equals(ROLES.ADMIN)) {
                 App.setRoot(Navigations.MASTER.getValue());
-            } else if (ROLES.ADMIN.getVal().equals(selectedItem)) {
+            } else if (roleChoiceBox.getValue().equals(ROLES.STAFF)) {
                 App.setRoot(Navigations.MASTER.getValue());
             }
         } else {
