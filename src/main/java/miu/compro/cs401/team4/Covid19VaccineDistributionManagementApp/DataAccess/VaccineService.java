@@ -1,6 +1,8 @@
 package miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.DataAccess;
 
+import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models.SiteStock;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models.Supplier;
+import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models.VaccinationSite;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models.Vaccine;
 
 import java.sql.PreparedStatement;
@@ -128,23 +130,31 @@ public class VaccineService extends RepositoryService<Vaccine> {
     }
     
     public boolean dispatch(Integer vaccineId, Integer siteId, Integer quantity) {
-//        int result = 0;
-//        try {
-//            System.out.println("query preparing");
-//            String query1 = "select * from SiteStock set name = ? , supplier = ?, amount =? where id = ?;";
-//            PreparedStatement preparedStatement1 = DBManager.getConnection().prepareStatement("");
-//            String query = "update SiteStock set name = ? , supplier = ?, amount =? where id = ?;";
-//
-//            PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
-//            preparedStatement.setInt(1, Id);
-//
-//
-//            result = preparedStatement.executeUpdate();
-//
-//        } catch (SQLException throwables) {
-//            throwables.printStackTrace();
-//        }
-//        return result > 0;
+        int result = 0;
+        try {
+        	var stockService= new SiteStockService();
+        	var stock = stockService.getByOthers(vaccineId, siteId);
+        	Vaccine vaccine = getById(vaccineId);
+        	
+        	vaccine.setAmount(vaccine.getAmount() - quantity);
+        	if(update(vaccine)) {
+        		if(stock == null) {
+            		stock = new SiteStock(null, 
+            				new VaccinationSite(siteId, null, null, null, null),
+            				vaccine,
+        					quantity);
+            		return stockService.add(stock);
+            	}
+            	else {
+            		stock.setStockAmount(quantity + stock.getStockAmount());
+            		return stockService.update(stock);
+            	}
+        	}
+        	
+        } catch (Exception throwables) {
+            throwables.printStackTrace();
+        }
+ 
     	return false;
     }
     

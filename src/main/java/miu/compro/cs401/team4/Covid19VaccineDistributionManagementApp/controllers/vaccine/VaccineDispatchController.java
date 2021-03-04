@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.App;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.DataAccess.RepositoryService;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.DataAccess.SupplierService;
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.DataAccess.VaccinationSiteService;
@@ -18,8 +19,8 @@ import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models.Vac
 import miu.compro.cs401.team4.Covid19VaccineDistributionManagementApp.models.Vaccine;
 
 public class VaccineDispatchController implements Initializable {
-	static final RepositoryService<Vaccine> vaccineService = new VaccineService();
-	static final RepositoryService<VaccinationSite> vaccinationSiteService = new VaccinationSiteService();
+	static final VaccineService vaccineService = new VaccineService();
+	static final VaccinationSiteService vaccinationSiteService = new VaccinationSiteService();
 
 	@FXML
 	ChoiceBox<VaccinationSite> ccbSite;
@@ -28,15 +29,16 @@ public class VaccineDispatchController implements Initializable {
 	TextField txtAmount;
 
 	Integer vaccineId;
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		List<VaccinationSite> sites;
 		try {
 			sites = vaccinationSiteService.getAll();
 			ccbSite.getItems().addAll(sites);
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
+			App.showError(e.getMessage());
 		}
 	}
 
@@ -47,10 +49,17 @@ public class VaccineDispatchController implements Initializable {
 	public void setVaccineId(Integer vaccineId) {
 		this.vaccineId = vaccineId;
 	}
-	
+
 	@FXML
 	public void dispatch() {
-		
+		try {
+			boolean res = vaccineService.dispatch(vaccineId, ccbSite.getValue().getId(), Integer.parseInt(txtAmount.getText()));
+			if(res)
+				App.showSuccess();
+		} catch (Exception e) {
+			e.printStackTrace();
+			App.showError(e.getMessage());
+		}
 	}
-	
+
 }
