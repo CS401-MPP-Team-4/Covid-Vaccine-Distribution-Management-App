@@ -33,7 +33,7 @@
                 <Label layoutX="146.0" layoutY="92.0" textFill="#8acbdf" />
             <TextField fx:id="candidateID" layoutX="97.0" layoutY="219.0" prefHeight="26.0" prefWidth="206.0" promptText="ID" />
             <Label layoutX="185.0" layoutY="61.0" />
-            <Label fx:id="statusInfo" layoutX="97.0" layoutY="56.0" text="Your" textFill="WHITE">
+            <Label fx:id="statusInfo" layoutX="97.0" layoutY="56.0" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>

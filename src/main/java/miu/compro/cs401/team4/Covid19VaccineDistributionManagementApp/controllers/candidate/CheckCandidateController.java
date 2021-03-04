@@ -23,7 +23,7 @@ public class CheckCandidateController {
 
     public void checkCandidateStatus(ActionEvent event) {
        Candidate candidate =  candidateService.getById(Integer.parseInt(candidateID.getText()));
-       statusInfo.setText(new StringBuilder("You are on ").append(candidate.getStatus()).append("status").toString());
+       statusInfo.setText(new StringBuilder("You are: ").append(candidate.getStatus()).toString());
 
     }
 
