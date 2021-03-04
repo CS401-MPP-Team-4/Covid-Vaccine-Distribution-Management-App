@@ -31,11 +31,10 @@ public class SupplierService extends RepositoryService<Supplier> {
 
         String query = "select id, name, address, phoneNumber from Supplier where id=?";
         supplier = DBManager.getById(query, resultSet-> new Supplier(
-											                resultSet.getInt(1),
-											                resultSet.getString(2),
-											                resultSet.getString(3),
-											                resultSet.getString(4)), id).orElse(null);
-
+                        resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getString(3),
+                        resultSet.getString(4)), id).orElse(null);
         return supplier;
     }
 
