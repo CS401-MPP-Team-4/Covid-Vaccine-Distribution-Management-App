@@ -15,7 +15,7 @@ public class StaffService extends RepositoryService<Staff> {
         List<Staff> StaffList = new ArrayList<>();
 
         try {
-            Statement statement = DBManager.getConnection().createStatement();
+            Statement statement = DBManager.getInstance().getConnection().createStatement();
             System.out.println("query preparing");
             String query = "select id, userName, password, jobDescription from Staff";
 
@@ -43,7 +43,7 @@ public class StaffService extends RepositoryService<Staff> {
         try {
             System.out.println("query preparing");
             String query = "select id, userName, password, jobDescription from Staff where id=?";
-            PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
+            PreparedStatement preparedStatement = DBManager.getInstance().getConnection().prepareStatement(query);
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -66,7 +66,7 @@ public class StaffService extends RepositoryService<Staff> {
             System.out.println("query preparing");
             String query = "insert into Staff( userName, password, jobDescription) values (?,?,?)";
 
-            PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
+            PreparedStatement preparedStatement = DBManager.getInstance().getConnection().prepareStatement(query);
             preparedStatement.setString(1, model.getUserName());
             preparedStatement.setString(2, model.getPassword());
             preparedStatement.setString(3, model.getJobDescription());
@@ -86,7 +86,7 @@ public class StaffService extends RepositoryService<Staff> {
             System.out.println("query preparing");
             String query = "update Staff set userName =?, password =?, jobDescription =? where id = ?;";
 
-            PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
+            PreparedStatement preparedStatement = DBManager.getInstance().getConnection().prepareStatement(query);
             preparedStatement.setString(1, model.getUserName());
             preparedStatement.setString(2, model.getPassword());
             preparedStatement.setString(3, model.getJobDescription());
@@ -108,7 +108,7 @@ public class StaffService extends RepositoryService<Staff> {
             System.out.println("query preparing");
             String query = "delete from Staff where id = ?";
 
-            PreparedStatement preparedStatement = DBManager.getConnection().prepareStatement(query);
+            PreparedStatement preparedStatement = DBManager.getInstance().getConnection().prepareStatement(query);
             preparedStatement.setInt(1, Id);
 
             result = preparedStatement.executeUpdate();

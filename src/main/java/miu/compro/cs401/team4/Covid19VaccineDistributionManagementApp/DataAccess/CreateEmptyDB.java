@@ -8,7 +8,7 @@ public class CreateEmptyDB {
 
 	/// CREATING NEW DB. DON"T USE UNLESS THERE IS NO DB FILE.
 	public static void main(String[] args) {
-		Connection connection = DBManager.getConnection();
+		Connection connection = DBManager.INSTANCE.getConnection();
 		try {
 			Statement statement = connection.createStatement();
 			statement.executeUpdate("CREATE TABLE Supplier(\r\n"
